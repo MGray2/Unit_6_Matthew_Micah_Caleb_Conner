@@ -1,0 +1,104 @@
+/* static/css/dashboard.css */
+
+.Talign {
+    text-align: center;
+}
+
+
+
+.Input_ {
+    background-color: rgb(227, 224, 255);
+    border: solid 1pt rgb(167, 174, 212);
+}
+
+.Input_::after {
+    height: 20pt;
+}
+
+.SignDiv {
+    border: solid 3pt rgb(68, 68, 93);
+    border-radius: 20pt;
+    background-color: rgb(50, 50, 72);
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+.SignDiv2 {
+    border: solid rgb(128, 155, 214) 3pt;
+    text-align: center;
+    padding: 3pt;
+    width:90%;
+    background-color: rgb(85, 83, 139);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.STool {
+    border: solid 3pt white;
+}
+
+
+/*background-color: rgb(22, 22, 33);*/
+
+html {
+    height: 100%;
+}
+
+.SignReg {
+    background-size: cover;
+    background-image: linear-gradient(to bottom,rgb(22, 22, 33),rgb(22, 22, 33),rgb(22, 22, 33),rgb(63, 63, 63));
+    color: white;
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+/*
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+#dashboard-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#assigned-section {
+    margin-top: 20px;
+}
+*/
+/* Customize styles based on your preferences */
