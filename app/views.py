@@ -20,7 +20,7 @@ def signup(request):
             if user.groups.filter(name="Admin").exists():
                 return redirect("dashboard")  # Redirect teachers to the dashboard
             elif user.groups.filter(name="User").exists():
-                return redirect("student")  # Redirect students to the student page
+                return redirect("base")  # Redirect students to the student page
     else:
         form = SignUpForm()
 
