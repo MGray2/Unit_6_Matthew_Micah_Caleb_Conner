@@ -1,0 +1,27 @@
+ <!-- signup.html -->
+ {% extends "SignRegister_base.html" %}
+ {% load widget_tweaks %}
+ {% block content %}
+ <br><br><br><br>
+ <div class="SignDiv">
+     <br><br>
+ <div class="SignDiv2">
+ <form method="post" action="{% url 'signup' %}">
+     {% csrf_token %}
+     <h2>Username:</h2>
+     {% render_field form.username class="Input_" %}
+     <h2>Password:</h2>
+     {% render_field form.password1 class="Input_" %}
+     <h2>Repeat Password:</h2>
+     {% render_field form.password2 class="Input_" %}
+     <br><br>
+     <button type="submit">Sign Up</button>
+     <br><br>
+ </form>
+ </div>
+ <div class="Talign">
+ <p>Already have an account? <a href="{% url 'login' %}">Log In</a></p>
+ <br>
+ <div>
+ </div>
+ {% endblock content %}
