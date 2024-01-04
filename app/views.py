@@ -18,7 +18,7 @@ def signup(request):
 
             # Redirect to different pages based on the selected group
             if user.groups.filter(name="Admin").exists():
-                return redirect("dashboard")  # Redirect teachers to the dashboard
+                return redirect("base")  # Redirect teachers to the dashboard
             elif user.groups.filter(name="User").exists():
                 return redirect("base")  # Redirect students to the student page
     else:
@@ -38,14 +38,14 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 # Redirect to the dashboard after successful login
-                return redirect("dashboard")
+                return redirect("base")
             else:
                 # Handle invalid login credentials
                 form.add_error(None, "Invalid username or password")
     else:
         form = LoginForm()
 
-    return render(request, "login.html", {"form": form})
+    return render(request, "signup.html", {"form": form})
 
 
 def dashboard(request):
@@ -58,24 +58,24 @@ def dashboard(request):
             if user_group.name == "User":
                 # Redirect students to student.html
                 return render(
-                    request, "student.html", {"user_authenticated": user_authenticated}
+                    request, "base.html", {"user_authenticated": user_authenticated}
                 )
             elif user_group.name == "Admin":
                 # For teachers, show the regular dashboard with assignment creation form
                 return render(
                     request,
-                    "dashboard.html",
+                    "base.html",
                     {"user_authenticated": user_authenticated},
                 )
 
         # For other groups or no group specified, show the regular dashboard
         return render(
-            request, "dashboard.html", {"user_authenticated": user_authenticated}
+            request, "base.html", {"user_authenticated": user_authenticated}
         )
     else:
-        return render(request, "login.html")  # Redirect to login if not authenticated
+        return render(request, "signup.html")  # Redirect to login if not authenticated
 
 
 def logout_view(request):
     logout(request)
-    return redirect("login")  # Redirect to the login page after logout
+    return redirect("signup")  # Redirect to the login page after logout
