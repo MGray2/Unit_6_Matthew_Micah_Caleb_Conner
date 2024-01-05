@@ -3,19 +3,19 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm, LoginForm
 
-def signup(request):
+def register(request):
     if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
 
-            # Redirect to the dashboard after successful signup
+            # Redirect to the dashboard after successful registration
             return redirect("dashboard")
     else:
         form = SignUpForm()
 
-    return render(request, "signup.html", {"form": form})
+    return render(request, "register.html", {"form": form})
 
 def login_view(request):
     if request.method == "POST":
@@ -35,7 +35,7 @@ def login_view(request):
     else:
         form = LoginForm()
 
-    return render(request, "signin.html", {"form": form})
+    return render(request, "login.html", {"form": form})
 
 def dashboard(request):
     user_authenticated = request.user.is_authenticated
@@ -54,8 +54,8 @@ def dashboard(request):
         # For other groups or no group specified, show the regular dashboard
         return render(request, "dash.html", {"user_authenticated": user_authenticated})
     else:
-        return render(request, "signup.html")  # Redirect to login if not authenticated
+        return render(request, "login.html")  # Redirect to login if not authenticated
 
 def logout_view(request):
     logout(request)
-    return redirect("signup")  # Redirect to the login page after logout
+    return redirect("register")  # Redirect to the registration page after logout

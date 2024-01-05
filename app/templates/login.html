@@ -6,7 +6,7 @@
 <div class="SignDiv">
     <br><br>
 <div class="SignDiv2">
-<form method="post" action="{% url 'signup' %}">
+<form method="post" action="{% url 'login' %}">
     {% csrf_token %}
     <h2>Username:</h2>
     {% render_field form.username class="Input_" %}
@@ -18,7 +18,7 @@
 </form>
 </div>
 <div class="Talign">
-<p>Dont have a account? <a href="{% url "signup" %}" class="Undark">Sign Up</a></p>
+<p>Dont have a account? <a href="{% url "register" %}" class="Undark">Sign Up</a></p>
 <br>
 <div>
 </div>

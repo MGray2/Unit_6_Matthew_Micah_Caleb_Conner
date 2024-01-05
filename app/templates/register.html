@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Signup</h2>
-    <form method="post" action="{% url 'signup' %}">
+    <form method="post" action="{% url 'register' %}">
         {% csrf_token %}
 
         <label for="{{ form.group.id_for_label }}">Select Group:</label>
