@@ -45,7 +45,7 @@ def login_view(request):
     else:
         form = LoginForm()
 
-    return render(request, "signup.html", {"form": form})
+    return render(request, "signin.html", {"form": form})
 
 
 def dashboard(request):
