@@ -15,6 +15,9 @@
     <br><br>
     <button type="submit">Sign In</button>
     <br><br>
+    {%for message in messages%}
+    <p>{{message}}</p>
+    {% endfor %}
 </form>
 </div>
 <div class="Talign">

@@ -1,5 +1,6 @@
 # views.py
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm, LoginForm
 
@@ -31,7 +32,7 @@ def login_view(request):
                 return redirect("dashboard")
             else:
                 # Handle invalid login credentials
-                form.add_error(None, "Invalid username or password")
+                messages.info(request, "Invalid username or password")
     else:
         form = LoginForm()
 
