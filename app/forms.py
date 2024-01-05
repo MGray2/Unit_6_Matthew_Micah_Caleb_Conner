@@ -23,5 +23,5 @@ class SignUpForm(UserCreationForm):
 
 
 class LoginForm(forms.Form):
-    email = forms.EmailField()
+    username = forms.CharField(max_length=30)
     password = forms.CharField(widget=forms.PasswordInput())
