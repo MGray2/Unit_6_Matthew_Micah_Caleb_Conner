@@ -4,53 +4,65 @@
 
 {% block content %}
     <div class="landing-page">
-        <h1>Welcome to ...</h1>
-        <p>Discover amazing things and meet new people!</p>
+        <h1>Welcome to the Hub!</h1>
+        <p>Connect with fellow Users!</p>
         <div class="buttons">
-            <a href="{% url 'register' %}" class="signup-button">Sign Up</a>
-            <a href="{% url 'login' %}" class="login-button">Login</a>
+            <a href="{% url 'register' %}" class="signup-button">Join the Adventure</a>
+            <a href="{% url 'login' %}" class="login-button">Login to Explore</a>
         </div>
     </div>
-
 
     <style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #2c3e50;
+            color: #ecf0f1;
         }
-        
+
         .landing-page {
             text-align: center;
             margin: 50px;
+            background-color: #3498db;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
         }
-        
+
         h1 {
-            color: #333;
+            color: #ecf0f1;
+            font-size: 2em;
+            margin-bottom: 10px;
         }
-        
+
         p {
-            color: #555;
+            font-size: 1.2em;
             margin-bottom: 20px;
         }
-        
+
         .buttons {
             display: flex;
             justify-content: center;
+            margin-top: 20px;
         }
-        
+
         .signup-button, .login-button {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 15px 30px;
             margin: 0 10px;
             text-decoration: none;
-            color: #fff;
-            background-color: #3498db;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            color: #ecf0f1;
+            background-color: #e74c3c;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
         }
-        
+
         .signup-button:hover, .login-button:hover {
-            background-color: #2980b9;
-        </style>
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+    </style>
 {% endblock %}
