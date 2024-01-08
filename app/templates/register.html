@@ -1,36 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
-</head>
-<body>
+{% extends "SignRegister_base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<br><br><br><br>
+<div class="SignDiv">
+    <br><br>
+<div class="SignDiv2">
     <h2>Signup</h2>
     <form method="post" action="{% url 'register' %}">
         {% csrf_token %}
+        <h3>Select Group:</h3>
+        {% render_field form.group class="Input_" %}
+        <br>
+        <div class="RegDiv">
+        <h3>Username: 
+        {% render_field form.username class="Input_" %}
+        </h3>   
+        </div>
+        <br>
+        <div class="RegDiv">
+        <h3>Email: 
+        {% render_field form.email class="Input_" %}
+        </h3>   
+        </div>  
+        <br>
+        <div class="RegDiv">
+        <h3>Password: 
+        {% render_field form.password1 class="Input_" %}
+        </h3>   
+        </div>
+        <br>
+        <div class="RegDiv">
+        <h3>Repeat Password: 
+        {% render_field form.password2 class="Input_" %}
+        </h3>   
+        </div>
+        <br>
 
-        <label for="{{ form.group.id_for_label }}">Select Group:</label>
-        {{ form.group }}
-        <br>
-        <label for="{{ form.username.id_for_label }}">Username:</label>
-        {{ form.username }}
-        <br>
-        <label for="{{ form.email.id_for_label }}">Email:</label>
-        {{ form.email }}
-        <br>
-        <label for="{{ form.password1.id_for_label }}">Password:</label>
-        {{ form.password1 }}
-        <br>
-        <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
-        {{ form.password2 }}
-        <br>
-
-        <button type="submit">Sign Up</button>
+        <button type="submit" class="GoodLookinButton">Sign Up</button>
         {{form.errors}}
     </form>
+</div>
 
     <!-- Add a "Sign In" button that links to the login page -->
-    <p>Already have an account? <a href="{% url 'login' %}">Sign In</a></p>
-</body>
-</html>
+    <p class="Talign">Already have an account? <a href="{% url 'login' %}">Sign In</a></p>
+</div>
+{% endblock content %}

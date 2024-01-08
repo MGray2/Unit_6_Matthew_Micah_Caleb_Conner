@@ -9,6 +9,8 @@ def landing_page(request):
     return render(request, "landing_page.html")
 
 def register(request):
+    form = SignUpForm()  # Initialize the form
+
     if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -19,7 +21,6 @@ def register(request):
             return redirect("dashboard")
 
     return render(request, "register.html", {"form": form})
-
 
 def login_view(request):
     if request.method == "POST":
