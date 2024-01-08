@@ -4,6 +4,21 @@
     text-align: center;
 }
 
+.GoodLookinButton {
+    width: 60pt;
+    height: 30pt;
+    color: white;
+    background-color: rgb(53, 54, 74);
+    border: solid 2pt rgb(185, 185, 255);
+    transition: 0.25s;
+}
+
+.GoodLookinButton:hover {
+    background-color: rgb(53, 74, 57);
+    border: solid 2pt rgb(185, 255, 193);
+    cursor: pointer;
+}
+
 
 
 .Input_ {
