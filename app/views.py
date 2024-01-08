@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm, LoginForm
 from django.contrib.auth.decorators import login_required
 
+def landing_page(request):
+    return render(request, "landing_page.html")
 
 def register(request):
     form = SignUpForm()  # Initialize the form
@@ -69,3 +71,5 @@ def dashboard(request):
 def logout_view(request):
     logout(request)
     return redirect(register)  # Redirect to the registration page after logout
+
+
