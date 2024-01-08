@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm, LoginForm
+from django.contrib.auth.decorators import login_required
+
 
 def register(request):
     if request.method == "POST":
@@ -13,10 +15,9 @@ def register(request):
 
             # Redirect to the dashboard after successful registration
             return redirect("dashboard")
-    else:
-        form = SignUpForm()
 
     return render(request, "register.html", {"form": form})
+
 
 def login_view(request):
     if request.method == "POST":
@@ -38,6 +39,8 @@ def login_view(request):
 
     return render(request, "login.html", {"form": form})
 
+
+@login_required(login_url=login_view)
 def dashboard(request):
     user_authenticated = request.user.is_authenticated
 
@@ -47,16 +50,21 @@ def dashboard(request):
         if user_group:
             if user_group.name == "User":
                 # Redirect students to student.html
-                return render(request, "dash.html", {"user_authenticated": user_authenticated})
+                return render(
+                    request, "dash.html", {"user_authenticated": user_authenticated}
+                )
             elif user_group.name == "Admin":
                 # For teachers, show the regular dashboard with assignment creation form
-                return render(request, "dash.html", {"user_authenticated": user_authenticated})
+                return render(
+                    request, "dash.html", {"user_authenticated": user_authenticated}
+                )
 
         # For other groups or no group specified, show the regular dashboard
         return render(request, "dash.html", {"user_authenticated": user_authenticated})
     else:
         return render(request, "login.html")  # Redirect to login if not authenticated
 
+
 def logout_view(request):
     logout(request)
-    return redirect("register")  # Redirect to the registration page after logout
+    return redirect(register)  # Redirect to the registration page after logout
