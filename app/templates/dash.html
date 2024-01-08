@@ -1,16 +1,104 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-  <head>
-    <h2>HIII erbhivb</h2>
-    <button><a href="{% url 'logout' %}">Log Out</a></button>
-    <!-- Log out button currently does not work, we may need a 'landing page' before any sign in. -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href={% static 'styles.css' %}>
-    <title>{% block title %}{% endblock title %}</title>
-  </head>
-  <body>
-    {% block content %}{% endblock content %}
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>{% block title %}Your Website{% endblock title %}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #555;
+            padding: 0.5rem;
+        }
+
+        nav a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #777;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: right;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>Welcome to Our Cool Website</h2>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+            <h3>Hello, {{ request.user.username }}!</h3>
+
+            <p>Welcome to your personalized dashboard. Here are some important things you need to know:</p>
+        {% endblock content %}
+    </main>
+
+    <footer>
+        <h2>*Footer*</h2>
+        <button><a href="{% url 'logout' %}">Log Out</a></button>
+    </footer>
+</body>
 </html>
