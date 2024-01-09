@@ -1,5 +1,70 @@
 /* static/css/dashboard.css */
 
+
+
+
+
+/* LANDING PAGE, THE GO TO, THE SPAWN ROOM!*/
+
+.landing-page {
+    text-align: center;
+    margin: 50px;
+    background-color: #34547d;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.signup-button, .login-button {
+    display: inline-block;
+    padding: 15px 30px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #ecf0f1;
+    background-color: #4e72c6;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.signup-button:hover, .login-button:hover {
+    background-color: #4e2bc0;
+    transform: scale(1.05);
+}
+
+
+/* YOU HAVE ARRIVED OUTSIDE THE LANDING ZONE */
+
+
+/* __________DASH__________ */
+
+.CreateButton {
+    background-color: #5557c4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: right;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .CreateButton:hover {
+    background-color: #494ba1
+  }
+/* __________END DASH__________ */
+
 .Talign {
     text-align: center;
 }
