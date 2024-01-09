@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+<!---->
+{% block title %}Start A Channel{% endblock title %}
+<!---->
+{% block content %}
+<form method="POST">
+  {% csrf_token %} {% for field in form %}
+  <h3>{{ field.name }}</h3>
+  <p>{{ field }}</p>
+  {% endfor %}
+  <input type="submit" />
+  {{ form.errors }}
+</form>
+{{ error }} {% endblock content %}

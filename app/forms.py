@@ -26,3 +26,8 @@ class SignUpForm(UserCreationForm):
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=30)
     password = forms.CharField(widget=forms.PasswordInput())
+
+
+class CreateChannelForm(forms.Form):
+    Name = forms.CharField(max_length=50)
+    Description = forms.CharField(max_length=200)

@@ -2,7 +2,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from .forms import SignUpForm, LoginForm
+from .forms import SignUpForm, LoginForm, CreateChannelForm
 from django.contrib.auth.decorators import login_required
 from .models import *
 
@@ -75,3 +75,20 @@ def dashboard(request):
 def logout_view(request):
     logout(request)
     return redirect(register)  # Redirect to the registration page after logout
+
+
+def create_channel(request):
+    if request.method == "POST":
+        form = CreateChannelForm(request.POST)
+        context = {"form": form}
+        if form.is_valid():
+            name = form.cleaned_data["Name"]
+            description = form.cleaned_data["Description"]
+            owner = CustomUser.objects.get(username=request.user.username)
+            Channel.objects.create(name=name, description=description, creator=owner)
+            return redirect(dashboard)
+    else:
+        form = CreateChannelForm()
+        context = {"form": form}
+
+    return render(request, "create_channel.html", context)
