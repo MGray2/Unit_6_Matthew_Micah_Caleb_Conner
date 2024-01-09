@@ -1,14 +1,31 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group, Permission
 
 
-class CustomUser(models.Model):
+class CustomUser(AbstractUser):
+    email = models.EmailField(unique=True)
     profile_picture = models.ImageField(
-        upload_to=None, height_field=None, width_field=None, max_length=None
+        upload_to="profile_pictures/", null=True, blank=True
     )
 
     def __str__(self):
-        return f"Name: {self.username}, Email: {self.email}, Password: {self.password}"
+        return f"Username: {self.username}, Email: {self.email}"
+
+    groups = models.ManyToManyField(
+        Group,
+        verbose_name=("groups"),
+        blank=True,
+        related_name="customuser_set",  # Choose a unique related_name
+        related_query_name="user",
+    )
+
+    user_permissions = models.ManyToManyField(
+        Permission,
+        verbose_name=("user permissions"),
+        blank=True,
+        related_name="customuser_set",  # Choose a unique related_name
+        related_query_name="user",
+    )
 
 
 class Channel(models.Model):

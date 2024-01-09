@@ -4,9 +4,12 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm, LoginForm
 from django.contrib.auth.decorators import login_required
+from .models import *
+
 
 def landing_page(request):
     return render(request, "landing_page.html")
+
 
 def register(request):
     form = SignUpForm()  # Initialize the form
@@ -21,6 +24,7 @@ def register(request):
             return redirect("dashboard")
 
     return render(request, "register.html", {"form": form})
+
 
 def login_view(request):
     if request.method == "POST":
@@ -71,5 +75,3 @@ def dashboard(request):
 def logout_view(request):
     logout(request)
     return redirect(register)  # Redirect to the registration page after logout
-
-
