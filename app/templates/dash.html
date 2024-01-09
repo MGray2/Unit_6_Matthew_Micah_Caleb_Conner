@@ -81,9 +81,9 @@
     <header>
       <h2>Welcome to Our Cool Website</h2>
       <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'dashboard' %}">Home</a>
+        <a href="{% url 'contact' %}">Contact</a>
       </nav>
     </header>
 

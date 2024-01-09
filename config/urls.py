@@ -9,5 +9,7 @@ urlpatterns = [
     path("logout/", logout_view, name="logout"),  # Logout page
     path("dashboard/", dashboard, name="dashboard"),  # Dashboard page
     path("create_channel/", create_channel, name="create_channel"),
+    path("about/", about, name="about"), # About page
+    path("contact/", contact, name="contact"), # Contact page
     path("", landing_page, name="landing_page"),  # landing page
 ]

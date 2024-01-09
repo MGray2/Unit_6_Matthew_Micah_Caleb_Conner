@@ -79,7 +79,7 @@ def dashboard(request):
     else:
         return render(request, "login.html")  # Redirect to login if not authenticated
 
-
+@login_required(login_url=login_view)
 def logout_view(request):
     logout(request)
     return redirect(register)  # Redirect to the registration page after logout
@@ -102,3 +102,11 @@ def create_channel(request):
 
     context = {"form": form}
     return render(request, "create_channel.html", context)
+
+@login_required(login_url=login_view)
+def about(request):
+    return render(request, "about.html")
+
+@login_required(login_url=login_view)
+def contact(request):
+    return render(request, "contact.html")

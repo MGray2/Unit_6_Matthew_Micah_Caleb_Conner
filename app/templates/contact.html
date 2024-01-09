@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+      font-family: "Arial", sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #555;
+      padding: 0.5rem;
+    }
+
+    nav a {
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #777;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.5em;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: right;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+  </style>
+  <header>
+    <h2>Welcome to Our Cool Website</h2>
+    <nav>
+        <a href="{% url 'dashboard' %}">Home</a>
+    </nav>
+</header>
+<body>
+    <h1>Contact Us</h1>
+    <p>Email: <a href="mailto:fakeemail@example.com">fakeemail@example.com</a></p>
+    <p>Phone: +1 (555) 123-4567</p>
+    <br>
+    <p>Email: <a href="mailto:fakeemail@example.com">email@example.com</a></p>
+    <p>Phone: +1 (555) 765-4321</p>
+    <br>
+    <p>Email: <a href="mailto:fakeemail@example.com">test@example.com</a></p>
+    <p>Phone: +1 (555) 342-1639</p>
+    <br>
+    <p>Email: <a href="mailto:fakeemail@example.com">gmail@example.com</a></p>
+    <p>Phone: +1 (555) 846-1743</p>
+</body>
+
+{% endblock %}
