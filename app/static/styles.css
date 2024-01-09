@@ -64,7 +64,12 @@
     background-color: #494ba1
   }
 /* __________END DASH__________ */
-
+.whatisgoingon {
+    background-color: indianred;
+    color: cadetblue;
+    color-scheme: red;
+    color-interpolation-filters: yellow;
+}
 .Talign {
     text-align: center;
 }
