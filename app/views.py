@@ -56,12 +56,18 @@ def dashboard(request):
 
         if user_group:
             if user_group.name == "User":
-                # Redirect students to student.html
+                you = CustomUser.objects.get(username=request.user.username)
+                channel_list = Channel.objects.filter(creator=you)
+
                 return render(
-                    request, "dash.html", {"user_authenticated": user_authenticated}
+                    request,
+                    "dash.html",
+                    {
+                        "user_authenticated": user_authenticated,
+                        "channels": channel_list,
+                    },
                 )
             elif user_group.name == "Admin":
-                # For teachers, show the regular dashboard with assignment creation form
                 return render(
                     request, "dash.html", {"user_authenticated": user_authenticated}
                 )
@@ -77,18 +83,20 @@ def logout_view(request):
     return redirect(register)  # Redirect to the registration page after logout
 
 
+@login_required(login_url=login_view)
 def create_channel(request):
+    owner = CustomUser.objects.get(username=request.user.username)
     if request.method == "POST":
         form = CreateChannelForm(request.POST)
-        context = {"form": form}
         if form.is_valid():
-            name = form.cleaned_data["Name"]
-            description = form.cleaned_data["Description"]
-            owner = CustomUser.objects.get(username=request.user.username)
-            Channel.objects.create(name=name, description=description, creator=owner)
+            new_channel = Channel.objects.create(
+                name=form.cleaned_data["Name"],
+                description=form.cleaned_data["Description"],
+                creator=owner,
+            )
             return redirect(dashboard)
     else:
         form = CreateChannelForm()
-        context = {"form": form}
 
+    context = {"form": form}
     return render(request, "create_channel.html", context)

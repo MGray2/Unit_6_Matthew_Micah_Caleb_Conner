@@ -15,7 +15,7 @@ class CustomUser(AbstractUser):
         Group,
         verbose_name=("groups"),
         blank=True,
-        related_name="customuser_set",  # Choose a unique related_name
+        related_name="customuser_set",
         related_query_name="user",
     )
 
@@ -23,7 +23,7 @@ class CustomUser(AbstractUser):
         Permission,
         verbose_name=("user permissions"),
         blank=True,
-        related_name="customuser_set",  # Choose a unique related_name
+        related_name="customuser_set",
         related_query_name="user",
     )
 
@@ -37,7 +37,7 @@ class Channel(models.Model):
     )
 
     def __str__(self):
-        return f"Name: {self.name}, Creator: {self.creator}, Chat Members: {self.chat_members}"
+        return f"Name: {self.name}, Creator: {self.creator}"
 
 
 class Membership(models.Model):

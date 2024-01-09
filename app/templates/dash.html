@@ -98,6 +98,11 @@
       {% endblock content %}
     </main>
     <button><a href="{% url 'create_channel' %}">Create A Channel</a></button>
+    <div>
+      {% for channel in channels %}
+      <button>{{ channel }}</button>
+      {% endfor %}
+    </div>
     <footer>
       <h2>*Footer*</h2>
       <button><a href="{% url 'logout' %}">Log Out</a></button>
