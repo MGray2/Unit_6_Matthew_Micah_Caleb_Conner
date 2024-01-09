@@ -58,6 +58,7 @@ def dashboard(request):
             if user_group.name == "User":
                 you = CustomUser.objects.get(username=request.user.username)
                 channel_list = Channel.objects.filter(creator=you)
+                involved_channels = Channel.objects.filter(chat_members=you)
 
                 return render(
                     request,
@@ -65,6 +66,7 @@ def dashboard(request):
                     {
                         "user_authenticated": user_authenticated,
                         "channels": channel_list,
+                        "involved_channels": involved_channels,
                     },
                 )
             elif user_group.name == "Admin":
