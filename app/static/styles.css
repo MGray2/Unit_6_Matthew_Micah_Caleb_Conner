@@ -62,7 +62,20 @@
 
   .CreateButton:hover {
     background-color: #494ba1
+
   }
+
+
+  .Footed {
+    background-color: #4f4f61;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+}
 /* __________END DASH__________ */
 
 /*__________ CREATE CHANNEL __________ */
