@@ -87,24 +87,28 @@
     <main>
       {% block content %}
       <h3>Hello, {{ request.user.username }}!</h3>
-
       <p>
         Welcome to your personalized dashboard. Here are some important things
         you need to know:
       </p>
       {% endblock content %}
     </main>
-    <div class="STool BigDiv">
+    <div class="BigDiv">
+      <div class="CreationB">
       <a href="{% url 'create_channel' %}"><button>Create A Channel</button></a>
-        <div class="STool Seperate">
-          <div>
+      <a href="{% url 'dashboard' %}"><button>Manage Profile (Goes nowhere right now)</button></a>
+      </div>
+        <div class="Seperate">
+          <div class="MyChannels">
+            <h4 class="BoxWords">My Channels</h4>
           {% for channel in channels %}
-          <a href="{% url 'channels' channel.name %}"><button>{{ channel.name }}</button></a>
+          <a href="{% url 'channels' channel.name %}"><button class="MyChannelButton BoxBut">{{ channel.name }}</button></a>
           {% endfor %}
           </div>
-          <div>
+          <div class="InvolvedChannels">
+            <h4 class="BoxWords">Channels I am involved in</h4>
           {% for channel in involved_channels %}
-          <a href="{% url 'channels' channel.name %}"><button>{{ channel.name }}</button></a>
+          <a href="{% url 'channels' channel.name %}"><button class="BoxBut ChannelInvolvedButton">{{ channel.name }}</button></a>
           {% endfor %}
           </div>
         </div>
