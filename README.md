@@ -8,8 +8,12 @@ Done So Far -
 [√] - Made groups for the users and admins 
 [√] - Added signup, login, dashboard 
 [√] - Superuser
+[ ] - Added more in the about
+[ ] - Got real contact info
+[ ] - Got a delete button
+[ ] - Mobile friendly?
 [ ] - Model Complete 
-[ ] - Channels 
+[x] - Channels 
 [ ] - Comments 
 [ ] - Project has full CRUD operations 
 [ ] - CSS styling
