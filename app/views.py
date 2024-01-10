@@ -59,7 +59,9 @@ def dashboard(request):
             if user_group.name == "User":
                 you = CustomUser.objects.get(username=request.user.username)
                 channel_list = Channel.objects.filter(creator=you)
-                involved_channels = Channel.objects.filter(chat_members=you)
+                involved_channels = Channel.objects.filter(chat_members=you).exclude(
+                    creator=you
+                )
 
                 return render(
                     request,
@@ -73,7 +75,9 @@ def dashboard(request):
             elif user_group.name == "Admin":
                 you = CustomUser.objects.get(username=request.user.username)
                 channel_list = Channel.objects.filter(creator=you)
-                involved_channels = Channel.objects.filter(chat_members=you)
+                involved_channels = Channel.objects.filter(chat_members=you).exclude(
+                    creator=you
+                )
 
                 return render(
                     request,
