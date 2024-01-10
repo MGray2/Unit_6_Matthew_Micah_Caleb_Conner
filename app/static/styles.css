@@ -64,6 +64,43 @@
     background-color: #494ba1
   }
 /* __________END DASH__________ */
+
+/*__________ CREATE CHANNEL __________ */
+
+.CreateDiv1 {
+    border-radius: 20pt;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #4f4f61;
+    width: 40%;
+    height:200pt;
+    padding: 5pt;
+}
+
+.CreateDiv2 {
+    justify-content: center;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    height: 99%;
+    width: 90%;
+    background-color: #6f708f;
+}
+
+
+
+
+
+
+
+/*__________  END CREATE CHANNEL __________ */
+
+.test {
+    color: #bbbbd5;
+    background-image: linear-gradient(to bottom,rgb(241, 241, 255),rgb(22, 22, 33),rgb(22, 22, 33),rgb(63, 63, 63));
+}
+
 .whatisgoingon {
     background-color: indianred;
     color: cadetblue;
