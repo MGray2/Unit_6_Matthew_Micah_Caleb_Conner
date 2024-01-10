@@ -13,5 +13,6 @@ urlpatterns = [
     path("contact/", contact, name="contact"),  # Contact page
     path("channels/<str:channel_name>/", channel_view, name="channels"),
     path("channels/settings/<str:channel_name>/", channel_settings, name="settings"),
+    path("profile/", profile, name="profile"), # Profile page
     path("", landing_page, name="landing_page"),  # landing page
 ]

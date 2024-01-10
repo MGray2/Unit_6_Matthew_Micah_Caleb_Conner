@@ -198,3 +198,31 @@ def channel_settings(request, channel_name):
         "people_rm": channel_members,
     }
     return render(request, "channel_settings.html", context)
+
+@login_required(login_url=login_view)
+def profile(request):
+    username = request.user.username
+    user = CustomUser.objects.get(username=username)
+    channels = user.channels.all()
+
+    if request.method == "POST":
+        form = ProfilePictureForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            context = {
+                "user": user,
+                "channels": channels,
+                "username": username,
+                "form": ProfilePictureForm(instance=user),
+            }
+            return redirect('profile', context)
+    else:
+        form = ProfilePictureForm()
+
+    context = {
+        "user": user,
+        "channels": channels,
+        "username": username,
+        "form": form,
+    }
+    return render(request, "profile.html", context)
