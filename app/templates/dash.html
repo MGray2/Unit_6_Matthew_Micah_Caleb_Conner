@@ -9,10 +9,45 @@
     <style>
       body {
         font-family: "Arial", sans-serif;
-        background-color: #f4f4f4;
+        background-size: cover;
+        background-image: linear-gradient(to bottom,#f9f9ff,#bbbbd5);
         margin: 0;
         padding: 0;
+        height: 100%;
         box-sizing: border-box;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+    
+      header {
+        background-color: #4f4f61;
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+      }
+    
+      nav {
+        display: flex;
+        justify-content: center;
+        background-color: #6f708f;
+        padding: 0.5rem;
+      }
+    
+      nav a {
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        margin: 0 10px;
+        transition: background-color 0.3s ease;
+      }
+    
+      nav a:hover {
+        background-color: #7e7fa6;
+      }
+    
+      h2 {
+        margin: 0;
+        font-size: 1.5em;
       }
 
       button {
@@ -37,18 +72,11 @@
       main {
         padding: 20px;
       }
-
-      footer {
-        background-color: #333;
-        color: #fff;
-        padding: 1rem;
-        text-align: center;
-      }
     </style>
   </head>
   <body>
     <header>
-      <h2>Welcome to Our Cool Website</h2>
+      <h2>Welcome to Elixer!</h2>
       <nav>
         <a href="{% url 'about' %}">About</a>
         <a href="{% url 'dashboard' %}">Home</a>
@@ -59,28 +87,35 @@
     <main>
       {% block content %}
       <h3>Hello, {{ request.user.username }}!</h3>
-
       <p>
         Welcome to your personalized dashboard. Here are some important things
         you need to know:
       </p>
       {% endblock content %}
     </main>
-    <a href="{% url 'create_channel' %}"><button>Create A Channel</button></a>
-    <div>
-      {% for channel in channels %}
-      <a href="{% url 'channels' channel.name %}"
-        ><button>{{ channel.name }}</button></a
-      >
-      {% endfor %} {% for channel in involved_channels %}
-      <a href="{% url 'channels' channel.name %}"
-        ><button>{{ channel.name }}</button></a
-      >
-      {% endfor %}
+    <div class="BigDiv">
+      <div class="CreationB">
+      <a href="{% url 'create_channel' %}"><button>Create A Channel</button></a>
+      <a href="{% url 'dashboard' %}"><button>Manage Profile (Goes nowhere right now)</button></a>
+      </div>
+        <div class="Seperate">
+          <div class="MyChannels">
+            <h4 class="BoxWords">My Channels</h4>
+          {% for channel in channels %}
+          <a href="{% url 'channels' channel.name %}"><button class="MyChannelButton BoxBut">{{ channel.name }}</button></a>
+          {% endfor %}
+          </div>
+          <div class="InvolvedChannels">
+            <h4 class="BoxWords">Channels I am involved in</h4>
+          {% for channel in involved_channels %}
+          <a href="{% url 'channels' channel.name %}"><button class="BoxBut ChannelInvolvedButton">{{ channel.name }}</button></a>
+          {% endfor %}
+          </div>
+        </div>
     </div>
-    <footer>
+    <footer class="Footed">
       <h2>*Footer*</h2>
-      <button><a href="{% url 'logout' %}">Log Out</a></button>
+     <a href="{% url 'logout' %}"> <button>Log Out</button></a>
     </footer>
   </body>
 </html>

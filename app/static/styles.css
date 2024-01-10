@@ -60,9 +60,83 @@
     transition: background-color 0.3s ease;
   }
 
-  .CreateButton:hover {
-    background-color: #494ba1
-  }
+.CreateButton:hover {
+background-color: #494ba1
+
+}
+
+
+.Footed {
+background-color: #4f4f61;
+color: #fff;
+padding: 1rem;
+text-align: center;
+position: fixed;
+bottom: 0;
+width: 98%;
+}
+
+.BigDiv {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+.CreationB {
+    height: 50pt;
+}
+
+.Seperate {
+    display: flex;
+    justify-content: space-around;
+}
+
+.MyChannels {
+    width: 40%;
+    height: 250pt;
+    border-radius: 5pt;
+    overflow: auto;
+    overflow-y: scroll;
+    border: #4f4f61 solid 3pt;
+    background-color: #6f708f;
+}
+
+.BoxBut {
+    width: 90%;
+}
+
+.MyChannelButton {
+    background-color: #30316a;
+    text-align: center;
+}
+
+.MyChannelButton:hover {
+    background-color: #3f4088;
+}
+
+.ChannelInvolvedButton {
+    background-color: #2d5c88;
+    text-align: center;
+}
+
+.ChannelInvolvedButton:hover {
+    background-color: #386ea0;
+}
+
+.BoxWords {
+    color: white;
+}
+
+.InvolvedChannels {
+    overflow: auto;
+    overflow-y: scroll;
+    width: 40%;
+    height: 250pt;
+    border: #4f4f61 solid 3pt;
+    background-color: #6f708f;
+}
+
 /* __________END DASH__________ */
 
 /*__________ CREATE CHANNEL __________ */
