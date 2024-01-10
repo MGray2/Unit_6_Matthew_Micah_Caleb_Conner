@@ -94,17 +94,20 @@
       </p>
       {% endblock content %}
     </main>
-    <a href="{% url 'create_channel' %}"><button>Create A Channel</button></a>
-    <div>
-      {% for channel in channels %}
-      <a href="{% url 'channels' channel.name %}"
-        ><button>{{ channel.name }}</button></a
-      >
-      {% endfor %} {% for channel in involved_channels %}
-      <a href="{% url 'channels' channel.name %}"
-        ><button>{{ channel.name }}</button></a
-      >
-      {% endfor %}
+    <div class="STool BigDiv">
+      <a href="{% url 'create_channel' %}"><button>Create A Channel</button></a>
+        <div class="STool Seperate">
+          <div>
+          {% for channel in channels %}
+          <a href="{% url 'channels' channel.name %}"><button>{{ channel.name }}</button></a>
+          {% endfor %}
+          </div>
+          <div>
+          {% for channel in involved_channels %}
+          <a href="{% url 'channels' channel.name %}"><button>{{ channel.name }}</button></a>
+          {% endfor %}
+          </div>
+        </div>
     </div>
     <footer class="Footed">
       <h2>*Footer*</h2>
