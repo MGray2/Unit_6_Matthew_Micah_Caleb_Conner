@@ -11,6 +11,7 @@ Done So Far -
 [ ] - Added more in the about
 [ ] - Got real contact info
 [ ] - Got a delete button
+[ ] - Make Less "White Space"
 [ ] - Mobile friendly?
 [ ] - Model Complete 
 [x] - Channels 
