@@ -100,9 +100,13 @@
     <a href="{% url 'create_channel' %}"><button>Create A Channel</button></a>
     <div>
       {% for channel in channels %}
-      <button>{{ channel }}</button>
-      {% endfor %} {% for chanel in involved_channels %}
-      <button>{{ channel }}</button>
+      <a href="{% url 'channels' channel.name %}"
+        ><button>{{ channel.name }}</button></a
+      >
+      {% endfor %} {% for channel in involved_channels %}
+      <a href="{% url 'channels' channel.name %}"
+        ><button>{{ channel.name }}</button></a
+      >
       {% endfor %}
     </div>
     <footer>

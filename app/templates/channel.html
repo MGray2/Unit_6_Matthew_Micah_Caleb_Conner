@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+<!---->
+{% block title %}{{ channel.name }}{% endblock title%}
+<!---->
+{% block content %}
+
+<h2>List of members</h2>
+<h3>{{ owner }}(owner)</h3>
+{% for member in members %}
+<h3>{{ member.username }}</h3>
+{% endfor %}
+<p>{{ channel.description }}</p>
+
+{% if request.user.username == owner %}
+<a href="{% url 'settings' channel.name %}"><button>Settings</button></a>
+{% endif %} {% endblock content %}

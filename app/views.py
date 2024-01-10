@@ -2,9 +2,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from .forms import SignUpForm, LoginForm, CreateChannelForm
+from .forms import *
 from django.contrib.auth.decorators import login_required
 from .models import *
+from django.urls import reverse
 
 
 def landing_page(request):
@@ -70,8 +71,18 @@ def dashboard(request):
                     },
                 )
             elif user_group.name == "Admin":
+                you = CustomUser.objects.get(username=request.user.username)
+                channel_list = Channel.objects.filter(creator=you)
+                involved_channels = Channel.objects.filter(chat_members=you)
+
                 return render(
-                    request, "dash.html", {"user_authenticated": user_authenticated}
+                    request,
+                    "dash.html",
+                    {
+                        "user_authenticated": user_authenticated,
+                        "channels": channel_list,
+                        "involved_channels": involved_channels,
+                    },
                 )
 
         # For other groups or no group specified, show the regular dashboard
@@ -79,10 +90,11 @@ def dashboard(request):
     else:
         return render(request, "login.html")  # Redirect to login if not authenticated
 
-@login_required(login_url=login_view)
+
+# logging in is not required
 def logout_view(request):
     logout(request)
-    return redirect(register)  # Redirect to the registration page after logout
+    return redirect(landing_page)  # Redirect to the registration page after logout
 
 
 @login_required(login_url=login_view)
@@ -91,7 +103,7 @@ def create_channel(request):
     if request.method == "POST":
         form = CreateChannelForm(request.POST)
         if form.is_valid():
-            new_channel = Channel.objects.create(
+            Channel.objects.create(
                 name=form.cleaned_data["Name"],
                 description=form.cleaned_data["Description"],
                 creator=owner,
@@ -103,10 +115,82 @@ def create_channel(request):
     context = {"form": form}
     return render(request, "create_channel.html", context)
 
+
+# About Page
 @login_required(login_url=login_view)
 def about(request):
     return render(request, "about.html")
 
+
+# Contact Page
 @login_required(login_url=login_view)
 def contact(request):
     return render(request, "contact.html")
+
+
+@login_required(login_url=login_view)
+def channel_view(request, channel_name):
+    try:
+        channel = Channel.objects.get(name=channel_name)
+        people_in_channel = channel.chat_members.exclude(id=channel.creator.id)
+        context = {
+            "channel": channel,
+            "members": people_in_channel,
+            "owner": channel.creator.username,
+        }
+
+    except:
+        return redirect(dashboard)
+    return render(request, "channel.html", context)
+
+
+@login_required(login_url=login_view)
+def channel_settings(request, channel_name):
+    channel = Channel.objects.get(name=channel_name)
+    not_channel_members = CustomUser.objects.exclude(
+        channels=channel
+    )  # People Not In Channel
+    channel_members = channel.chat_members.exclude(id=channel.creator.id)
+    if request.method == "POST":
+        form = UpdateChannelForm(request.POST)
+        if form.is_valid():
+            # Form Variables
+            new_name = form.cleaned_data["Name"]
+            new_desc = form.cleaned_data["Description"]
+            new_mode = form.cleaned_data["SafeMode"]
+            person_to_add = request.POST.get("selected_person")
+            person_to_remove = request.POST.get("person_to_remove")
+            # If New Channel Name
+            if new_name:
+                channel.name = new_name
+                channel.save()
+                # If New Description
+            if new_desc:
+                channel.description = new_desc
+                channel.save()
+            if new_mode:
+                channel.safe_mode = new_mode
+                channel.save()
+                # Add Member To Channel
+            if person_to_add:
+                selected_person = CustomUser.objects.get(username=person_to_add)
+                Membership.objects.create(member=selected_person, channel=channel)
+                # Delete Member To Channel
+            if person_to_remove:
+                selected_person = CustomUser.objects.get(username=person_to_remove)
+                to_remove = Membership.objects.get(
+                    member=selected_person, channel=channel
+                )
+                to_remove.delete()
+
+        return redirect(reverse(channel_view, args=[channel_name]))
+
+    else:
+        form = UpdateChannelForm()
+    context = {
+        "channel": channel,
+        "form": form,
+        "people_add": not_channel_members,
+        "people_rm": channel_members,
+    }
+    return render(request, "channel_settings.html", context)

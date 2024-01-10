@@ -35,6 +35,11 @@ class Channel(models.Model):
     chat_members = models.ManyToManyField(
         CustomUser, related_name="channels", through="Membership"
     )
+    MODE = (("Enabled", "Enabled"), ("Disabled", "Disabled"))
+    safe_mode = models.CharField(
+        max_length=10,
+        choices=MODE,
+    )
 
     def __str__(self):
         return f"Name: {self.name}, Creator: {self.creator}"

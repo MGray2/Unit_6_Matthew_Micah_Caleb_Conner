@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+<!---->
+{% block title %}Settings for {{ channel.name }}{% endblock title %}
+<!---->
+{% block content %}
+<h2>Update Your Channel</h2>
+<form method="POST">
+  {% csrf_token %} {% for field in form %}
+  <h3>{{ field.name }}</h3>
+  <p>{{ field }}</p>
+  {% endfor %}
+  <input type="submit" />
+  {{ form.errors }}
+</form>
+<h2>Add People</h2>
+<form method="POST">
+  {% csrf_token %}
+  <select name="selected_person">
+    <option></option>
+    {% for person in people_add %}
+    <option>{{ person.username }}</option>
+    {% endfor %}
+    <input type="submit" />
+  </select>
+</form>
+<h2>Remove People</h2>
+<form method="POST">
+  {% csrf_token %}
+  <select name="person_to_remove">
+    <option></option>
+    {% for person in people_rm %}
+    <option>{{ person.username }}</option>
+    {% endfor %}
+    <input type="submit" />
+  </select>
+</form>
+
+{% endblock content %}
