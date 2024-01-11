@@ -1,7 +1,10 @@
 /* static/css/dashboard.css */
 
 
-
+:root {
+    --darker_blue:#4f4f61;
+    --lighter_blue:#6f708f;
+}
 
 
 /* LANDING PAGE, THE GO TO, THE SPAWN ROOM!*/
@@ -212,6 +215,48 @@ background-color: #7e7fa6;
 
 
 /*__________  END CREATE CHANNEL __________ */
+
+
+
+/*__________ ABOUT US & CONTACTS __________ */
+
+.AboutDiv1 {
+
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    background-color: var(--darker_blue);
+    border-radius: 20pt;
+    border: rgb(42, 42, 60) solid 3pt;
+}
+
+.AboutDiv2 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    margin: 10pt;
+    text-align: center;
+    background-color: var(--lighter_blue);
+    color: white;
+    border: solid 3pt rgb(159, 159, 209);
+}
+
+.ContA:link {
+    color: #cfe8ff;
+}
+
+.ContA:visited {
+    color: #8191a0;
+}
+
+.ContA:hover {
+    color: #95ccff;
+}
+
+
+/* __________ END ABOUT US & CONTACTS__________ */
 
 .test {
     color: #bbbbd5;
