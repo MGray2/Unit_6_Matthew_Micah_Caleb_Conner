@@ -1,18 +1,58 @@
 {% extends "base.html" %}
-
+<!---->
 {% block title %}{{ channel.name }}{% endblock title %}
-
+<!---->
 {% block content %}
-    <a href="{% url 'dashboard' %}"><button>Back</button></a>
-    
-    <h2>List of members</h2>
-    <h3>{{ owner }}(owner)</h3>
-    {% for member in members %}
-        <h3>{{ member.username }}</h3>
-    {% endfor %}
-    <p>{{ channel.description }}</p>
+<a href="{% url 'dashboard' %}"><button>Back</button></a>
+<!-- remove --><style>
+  select {
+    width: 200px; /* Set a fixed width for the dropdown */
+    overflow: hidden; /* Prevent text from overlapping */
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-overflow: ellipsis; /* Show ellipsis (...) for overflowed text */
+  }
+</style>
 
-    {% if request.user.username == owner %}
-        <a href="{% url 'settings' channel.name %}"><button>Settings</button></a>
-    {% endif %}
+<h2>List of members</h2>
+<h3>{{ owner }}(owner)</h3>
+{% for member in members %}
+<h3>{{ member.username }}</h3>
+{% endfor %}
+<p>{{ channel.description }}</p>
+
+{% if request.user.username == owner %}
+<a href="{% url 'settings' channel.name %}"><button>Settings</button></a>
+{% endif %}
+<br />
+<h4>----------------comments-------------------</h4>
+<br /><!-- you can remove this-->
+{% for comment in comments %} {% if comment.owner.profile_picture %}<img
+  src="{{ comment.owner.profile_picture.url }}"
+  width="40"
+  height="40"
+/>{% endif %}
+<p>{{ comment.owner.username }}: {{ comment.message }}</p>
+
+{% endfor %}
+<br />
+<h4>-------------------------------------------</h4>
+<br /><!-- you can remove this-->
+<h3>Make A Comment</h3>
+<form method="POST">
+  {% csrf_token %}
+  <input type="text" required name="comment_text" max_length="300" />
+  <input type="submit" />
+</form>
+<h3>Delete Comment</h3>
+<form method="POST">
+  {% csrf_token %}
+  <select name="comment_remove">
+    <option></option>
+    {% for your_comment in your_comments %}
+    <option value="{{your_comment.id}}">{{ your_comment.message }}</option>
+    {% endfor %}
+  </select>
+  <input type="submit" />
+</form>
+
 {% endblock content %}

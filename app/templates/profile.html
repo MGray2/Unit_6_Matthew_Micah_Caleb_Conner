@@ -1,19 +1,19 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-    <h1>{{ username.title }}'s Profile</h1>
+{% extends 'base.html' %} {% load static %} {% block content %}
+<h1>{{ username.title }}'s Profile</h1>
 
-    <div>
-        {% if user.profile_picture %}
-            <img src="{{ user.profile_picture.url }}" alt="{{ username.title }}">
-        {% else %}
-            <img src="{% static 'images/dinosaur_profile_default.jpg' %}" alt="{{ username.title }}">
-        {% endif %}
-    </div>
+<div>
+  {% if user.profile_picture %}
+  <img src="{{ user.profile_picture.url }}" alt="{{ username.title }}" />
+  {% else %}
+  <img
+    src="{% static 'images/dinosaur_profile_default.jpg' %}"
+    alt="{{ username.title }}"
+  />
+  {% endif %}
+</div>
 
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Save</button>
-    </form>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %} {{ form }}
+  <button type="submit">Save</button>
+</form>
 {% endblock %}

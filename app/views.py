@@ -6,6 +6,7 @@ from .forms import *
 from django.contrib.auth.decorators import login_required
 from .models import *
 from django.urls import reverse
+from better_profanity import profanity
 
 
 def landing_page(request):
@@ -136,13 +137,31 @@ def contact(request):
 def channel_view(request, channel_name):
     try:
         channel = Channel.objects.get(name=channel_name)
+        channel_comments = Comment.objects.filter(channel=channel)
+        you = CustomUser.objects.get(username=request.user.username)
+        your_comments = Comment.objects.filter(owner=you, channel=channel)
         people_in_channel = channel.chat_members.exclude(id=channel.creator.id)
         context = {
             "channel": channel,
             "members": people_in_channel,
             "owner": channel.creator.username,
+            "comments": channel_comments,
+            "your_comments": your_comments,
         }
-
+        if request.method == "POST":
+            text = request.POST.get("comment_text")
+            # adding comments
+            if text:
+                if channel.safe_mode == "Enabled":
+                    text = profanity.censor(text)
+                Comment.objects.create(owner=you, channel=channel, message=text)
+                # removing comments
+            comment_id = request.POST.get("comment_remove")
+            if comment_id:
+                comment_to_rm = Comment.objects.get(
+                    id=comment_id, owner=you, channel=channel
+                )
+                comment_to_rm.delete()
     except:
         return redirect(dashboard)
     return render(request, "channel.html", context)
@@ -199,6 +218,7 @@ def channel_settings(request, channel_name):
     }
     return render(request, "channel_settings.html", context)
 
+
 @login_required(login_url=login_view)
 def profile(request):
     username = request.user.username
@@ -215,7 +235,7 @@ def profile(request):
                 "username": username,
                 "form": ProfilePictureForm(instance=user),
             }
-            return redirect('profile', context)
+            return render(request, "profile.html", context)
     else:
         form = ProfilePictureForm()
 

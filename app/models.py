@@ -5,7 +5,9 @@ from django.contrib.auth.models import AbstractUser, Group, Permission
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     profile_picture = models.ImageField(
-        upload_to="profile_pictures/", null=True, blank=True
+        upload_to="profile_pictures/",
+        null=True,
+        blank=True,
     )
 
     def __str__(self):

@@ -42,7 +42,8 @@ class UpdateChannelForm(forms.Form):
     ]
     SafeMode = forms.ChoiceField(choices=SAFE_MODE_CHOICES, required=False)
 
+
 class ProfilePictureForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['profile_picture']
+        fields = ["profile_picture"]
