@@ -26,13 +26,22 @@
 <br />
 <h4>----------------comments-------------------</h4>
 <br /><!-- you can remove this-->
-{% for comment in comments %} {% if comment.owner.profile_picture %}<img
+{% for comment in comments %} 
+{% if comment.owner.username == request.user.username %}
+<!-- Your Comment -->
+<div class="yourComment"><p>{{ comment.owner.username }}: {{ comment.message }}</p>{% if comment.owner.profile_picture %}<img
+src="{{ comment.owner.profile_picture.url }}"
+width="40"
+height="40"
+/></div>{% endif %}{% else %} 
+<!-- Regular Comment -->
+<div class="comment">{% if comment.owner.profile_picture %}<img
   src="{{ comment.owner.profile_picture.url }}"
   width="40"
   height="40"
 />{% endif %}
-<p>{{ comment.owner.username }}: {{ comment.message }}</p>
-
+<p>{{ comment.owner.username }}: {{ comment.message }}</p></div>
+{% endif %}
 {% endfor %}
 <br />
 <h4>-------------------------------------------</h4>
