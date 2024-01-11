@@ -192,6 +192,8 @@ background-color: #7e7fa6;
 .DashDiv {
     width: 100%;
     justify-content: flex-start;
+    bottom: 0;
+    border: solid 10pt #4f4f61;;
     display: flex;
 }
 
