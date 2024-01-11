@@ -1,7 +1,7 @@
 # Unit_6_Matthew_Micah_Caleb_Conner
 Group Unit Project
 
-Name - Pending
+Name - Elixer
 
 Done So Far - 
 [√] - Created a superuser 
@@ -14,8 +14,8 @@ Done So Far -
 [ ] - Make Less "White Space"
 [ ] - Mobile friendly?
 [ ] - Model Complete 
-[x] - Channels 
-[ ] - Comments 
+[√] - Channels 
+[√] - Comments 
 [ ] - Project has full CRUD operations 
 [ ] - CSS styling
 

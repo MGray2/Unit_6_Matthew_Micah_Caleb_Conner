@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 <!---->
 {% block title %}{{ channel.name }}{% endblock title %}
 <!---->
@@ -33,13 +34,13 @@
 src="{{ comment.owner.profile_picture.url }}"
 width="40"
 height="40"
-/></div>{% endif %}{% else %} 
+/></div>{% else %}<img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40">{% endif %}{% else %} 
 <!-- Regular Comment -->
 <div class="comment">{% if comment.owner.profile_picture %}<img
   src="{{ comment.owner.profile_picture.url }}"
   width="40"
   height="40"
-/>{% endif %}
+/>{% else %}<img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40">{% endif %}
 <p>{{ comment.owner.username }}: {{ comment.message }}</p></div>
 {% endif %}
 {% endfor %}
