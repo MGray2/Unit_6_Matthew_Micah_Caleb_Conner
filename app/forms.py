@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User, Group
 from .models import *
 
@@ -47,3 +47,8 @@ class ProfilePictureForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ["profile_picture"]
+
+class UserEditForm(UserChangeForm):
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'email', 'first_name', 'last_name']

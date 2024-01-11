@@ -221,28 +221,25 @@ def channel_settings(request, channel_name):
 
 @login_required(login_url=login_view)
 def profile(request):
-    username = request.user.username
-    user = CustomUser.objects.get(username=username)
+    user = request.user
     channels = user.channels.all()
 
     if request.method == "POST":
         form = ProfilePictureForm(request.POST, request.FILES, instance=user)
-        if form.is_valid():
+        user_form = UserEditForm(request.POST, instance=user)
+
+        if form.is_valid() and user_form.is_valid():
             form.save()
-            context = {
-                "user": user,
-                "channels": channels,
-                "username": username,
-                "form": ProfilePictureForm(instance=user),
-            }
-            return render(request, "profile.html", context)
+            user_form.save()
+            return redirect('profile')  # Assuming you have a URL pattern named 'profile'
     else:
-        form = ProfilePictureForm()
+        form = ProfilePictureForm(instance=user)
+        user_form = UserEditForm(instance=user)
 
     context = {
         "user": user,
         "channels": channels,
-        "username": username,
         "form": form,
+        "user_form": user_form,
     }
     return render(request, "profile.html", context)
