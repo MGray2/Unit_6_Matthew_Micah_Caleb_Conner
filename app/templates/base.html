@@ -7,7 +7,15 @@
     <title>{% block title %}{% endblock title %}</title>
     <link rel="stylesheet" href="{% static "styles.css" %}">
   </head>
-  <body>
+  <header class="DashHeader">
+    <h2 class="headerWords">Welcome to Elixer!</h2>
+    <nav class="navigation">
+      <a href="{% url 'about' %}" class="NavA">About</a>
+      <a href="{% url 'dashboard' %}" class="NavA">Home</a>
+      <a href="{% url 'contact' %}" class="NavA">Contact</a>
+    </nav>
+  </header>
+  <body class="GradBod">
     {% block content %}{% endblock content %}
   </body>
 </html>
