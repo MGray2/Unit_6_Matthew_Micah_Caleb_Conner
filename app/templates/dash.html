@@ -56,8 +56,14 @@
         </div>
     </div>
     <footer class="Footed">
-      <h2 class="headerWords">*Footer*</h2>
-     <a href="{% url 'logout' %}"> <button>Log Out</button></a>
+      <div class="DashDiv2">
+      <div class="DashDiv">
+        <img src="{% static "images/Cc.logo.circle.svg.png" %}" class="CC">
+      <h4 class="headerWords2">Elixer.com</h4>
+      </div>
+
+     <a href="{% url 'logout' %}"> <button class="LogoutButton">Log Out</button></a>
+    </div>
     </footer>
   </body>
 {% endblock content %}

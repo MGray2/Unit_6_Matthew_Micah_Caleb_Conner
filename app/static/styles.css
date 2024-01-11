@@ -183,6 +183,49 @@ background-color: #7e7fa6;
     font-size: 1.5em;
   }
 
+  .headerWords2 {
+    margin: 0;
+    font-size: 1.5em;
+    color:black;
+  }
+
+.DashDiv {
+    width: 100%;
+    justify-content: flex-start;
+    display: flex;
+}
+
+.DashDiv2 {
+    display: flex;
+    height: 30pt;
+    justify-content: center;
+}
+
+.CC {
+    height: 20pt;
+}
+
+.LogoutButton {
+    width: 80pt;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+.LogoutButton:hover {
+    background-color: #a04545;
+  }
+
+
 /* __________END DASH__________ */
 
 /*__________ CREATE CHANNEL __________ */
@@ -195,6 +238,7 @@ background-color: #7e7fa6;
     width: 40%;
     height:200pt;
     padding: 5pt;
+    border: rgb(42, 42, 60) solid 3pt;
 }
 
 .CreateDiv2 {
@@ -206,6 +250,7 @@ background-color: #7e7fa6;
     height: 99%;
     width: 90%;
     background-color: #6f708f;
+    border: solid 3pt rgb(159, 159, 209);
 }
 
 
@@ -233,6 +278,7 @@ background-color: #7e7fa6;
 }
 
 .AboutDiv2 {
+    padding: 10pt;
     margin-left: auto;
     margin-right: auto;
     width: 90%;
