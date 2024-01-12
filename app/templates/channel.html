@@ -12,9 +12,6 @@
     text-overflow: ellipsis; /* Show ellipsis (...) for overflowed text */
   }
 
-  {% comment %} body {
-    position:fixed;
-  } {% endcomment %}
 </style>
 <table class="ChannelTable">
   <tr class="GETSMALL">
@@ -35,6 +32,7 @@
     <!--__________ LIST OF CHANNELS __________-->
     <td class="ChannelTD" rowspan="3" >
       <div class="List">
+        <h4 class="SideWords">CHANNELS</h4>
       {% for a in all_in%}
           <a href="{% url 'channels' a.name %}"><button class="ChannelButton BoxBut">{{ a.name }}</button></a>
       {% endfor %}
@@ -51,17 +49,41 @@
 <br /><!-- you can remove this-->
 {% for comment in comments %} 
 {% if comment.owner.username == request.user.username %}
+    <!-- Your Comment -->
+    <div class="yourComment">
+      <table>
+        <tr>
+          <td class="YourMessageStructure">
+            {% if comment.owner.profile_picture %}
+            <img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
+            {% else %}
+            <img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic">
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td class="YourMessageStructure">
+            {% if comment.owner.username == owner %}
+            <b class="OwnerL">{{ comment.owner.username }}</b>
+            {% else %}
+            <b class="MemberL">{{ comment.owner.username }}</b>
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <p class="NoPicTouch"> {{ comment.message }}</p>
+          </td>
+        </tr>
+      </table>
 
 
-<!-- Your Comment -->
-<div class="yourComment">
-<p class="NoPicTouch">{{ comment.owner.username }}: {{ comment.message }}</p>
-{% if comment.owner.profile_picture %}
-<img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
-{% else %}
-<img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic">
-</div>
-{% endif %}
+    {% comment %} <p class="NoPicTouch">: {{ comment.message }}</p>
+    {% if comment.owner.profile_picture %}
+    <img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
+    {% else %}
+    <img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic"> {% endcomment %}
+    </div>
 {% else %} 
 
 
@@ -69,17 +91,49 @@
 
 <!-- Regular Comment -->
 <div class="comment ">
-{% if comment.owner.profile_picture %}
+  <table>
+    <tr>
+      <td class="MessageStructure">
+        {% if comment.owner.profile_picture %}
+        <img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
+        {% else %}
+        <img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic">
+        {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td class="MessageStructure">
+        {% if comment.owner.username == owner %}
+        <b class="OwnerL">{{ comment.owner.username }}</b>
+        {% else %}
+        <b class="MemberL">{{ comment.owner.username }}</b>
+        {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td>
+      <p class="NoPicTouch"> {{ comment.message }}</p>
+      </td>
+    </tr>
+  </table>
+
+
+{% comment %} {% if comment.owner.profile_picture %}
 <img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
 {% else %}
 <img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic">
 {% endif %}
 <p>{{ comment.owner.username }}: {{ comment.message }}</p>
 </div>
-{% endif %}
-{% endfor %}
-<br />
-</div>
+
+ {% endcomment %}
+
+
+
+    </div>
+    
+    {% endif %}
+    {% endfor %}
     </td>
     <!--__________ END LIST OF MESSAGES __________-->
 
@@ -89,6 +143,7 @@
     <!--__________ LIST OF MEMBERS __________-->
     <td class="MemberTD" rowspan="3">
       <div class="List">
+        <h4 class="SideWords">MEMBERS</h4>
       <h3 class="OwnerL">{{ owner }}</h3>
       {% for member in members %}
       <h3 class="MemberL">{{ member.username }}</h3>
@@ -110,7 +165,7 @@
       <form method="POST">
         {% csrf_token %}
         <input type="text" required name="comment_text" max_length="300" class="CommentBar" />
-        <input type="submit"/>
+        <input type="submit" value="Send Message" class="MessageButton"/>
       </form>
     </div>
     <div class="Pad CommentDiv2">
@@ -123,7 +178,7 @@
           <option value="{{your_comment.id}}">{{ your_comment.message }}</option>
           {% endfor %}
         </select>
-        <input type="submit" />
+        <input type="submit" value="Delete" class="MessageButton" />
       </form>
     </div>
     </td>

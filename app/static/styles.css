@@ -70,6 +70,19 @@ background-color: #494ba1
 
 }
 
+.MessageButton {
+    color: white;
+    background-color: rgb(68, 68, 114);
+    height: 25pt;
+    border: none;
+    border-radius: 10pt;
+    transition: 0.3s ease;
+}
+
+.MessageButton:hover {
+    background-color: rgb(81, 81, 134);
+    cursor: pointer;
+}
 
 .Footed {
 background-color: #4f4f61;
@@ -391,6 +404,10 @@ background-color: #7e7fa6;
     height: 425pt;
 }
 
+.SideWords {
+    color: white;
+    border-bottom: solid 3pt var(--border_interior);
+}
 
 .OwnerL {
     color: rgb(128, 0, 197);
@@ -418,6 +435,18 @@ background-color: #7e7fa6;
 
 .Pad {
     padding: 5pt;
+}
+
+.MessageStructure {
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.YourMessageStructure {
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .yourComment {
