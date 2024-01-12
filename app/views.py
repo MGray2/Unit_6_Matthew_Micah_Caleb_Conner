@@ -227,11 +227,19 @@ def profile(request):
     if request.method == "POST":
         form = ProfilePictureForm(request.POST, request.FILES, instance=user)
         user_form = UserEditForm(request.POST, instance=user)
+        delete_confirm = request.POST.get("d")
 
-        if form.is_valid() and user_form.is_valid():
+        if form.is_valid():
             form.save()
+            return redirect("profile")
+        if user_form.is_valid():
             user_form.save()
-            return redirect('profile')  # Assuming you have a URL pattern named 'profile'
+            return redirect("profile")
+        if delete_confirm:
+            target = CustomUser.objects.get(id=request.user.id)
+            logout(request)
+            target.delete()
+            return redirect(landing_page)
     else:
         form = ProfilePictureForm(instance=user)
         user_form = UserEditForm(instance=user)
