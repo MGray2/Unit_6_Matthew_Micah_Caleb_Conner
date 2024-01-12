@@ -250,6 +250,7 @@ background-color: #7e7fa6;
 
 /* __________END DASH__________ */
 
+
 /*__________ CREATE CHANNEL __________ */
 
 .CreateDiv1 {
@@ -352,17 +353,69 @@ background-color: #7e7fa6;
     padding: 5pt;
 }
 
+.GETSMALL {
+    height:5pt;
+}
+
+.ChannelTable {
+    width: 100%;
+    height: 98%;
+}
+
+.ChannelList {
+    width: 15%;
+    overflow-y: auto;
+    vertical-align: top;
+}
+
+.testingpic {
+    border-radius: 50%;
+}
 
 
+.MemberList {
+    width: 15%;
+    overflow-y: auto;
+}
 
+.TestingMessages {
+    background-color: rgb(208, 208, 208);
+    border: solid 3pt black;
+    height: 350pt;
+    overflow-y: auto;
+}
 
+.messageTD {
+    vertical-align: top;
+    height: 350pt;
+}
 
+.Pad {
+    padding: 5pt;
+}
 
+.yourComment {
+    display: flex;
+    justify-content: flex-end;
+    padding: 3pt;
+}
+
+.comment {
+    display: flex;
+    justify-content: flex-start;
+    padding:3pt;
+}
+
+.CreateComment {
+    display: flex;
+    justify-content: space-evenly;
+}
 
 /* __________ END CHANNEL __________  */
 .test {
     color: #bbbbd5;
     background-image: linear-gradient(to bottom,rgb(241, 241, 255),rgb(22, 22, 33),rgb(22, 22, 33),rgb(63, 63, 63));
+    position: fixed;
 }
 
 .whatisgoingon {
