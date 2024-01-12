@@ -4,6 +4,8 @@
 :root {
     --darker_blue:#4f4f61;
     --lighter_blue:#6f708f;
+    --border_exterior:#4d62b0;
+    --border_interior: #001359;
 }
 
 
@@ -108,6 +110,26 @@ width: 98%;
 .BoxBut {
     width: 90%;
 }
+
+.ChannelButton {
+    background-color: #6f4caf;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .ChannelButton:hover {
+    background-color: #8059c9;
+  }
+
 
 .MyChannelButton {
     background-color: #30316a;
@@ -230,6 +252,7 @@ background-color: #7e7fa6;
 
 /* __________END DASH__________ */
 
+
 /*__________ CREATE CHANNEL __________ */
 
 .CreateDiv1 {
@@ -304,11 +327,140 @@ background-color: #7e7fa6;
 }
 
 
-/* __________ END ABOUT US & CONTACTS__________ */
+/* __________ END ABOUT US & CONTACTS __________ */
 
+
+/* __________ CHANNEL __________ */
+
+
+.BigChannelDiv {
+    display: flex;
+}
+
+.BobContainer {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    width: 15%;
+    margin-left: auto;
+    height:100%;
+}
+
+.Bob {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
+    padding: 5pt;
+}
+
+.GETSMALL {
+    height:5pt;
+}
+
+.ChannelTable {
+    width: 98%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.ChannelTD {
+    width: 15%;
+    height: 100%;
+    border: solid 3pt var(--border_exterior);
+    background-color: var(--border_interior)
+}
+
+.testingpic {
+    border-radius: 50%;
+}
+
+
+.MemberTD {
+    background-color: var(--border_interior);
+    width: 15%;
+    border: solid 3pt var(--border_exterior);
+}
+
+.List {
+    background-color: #828db5;
+    border: solid 3pt var(--border_interior);
+    text-align: center;
+    overflow-y: auto;
+    height: 425pt;
+}
+
+
+.OwnerL {
+    color: rgb(128, 0, 197);
+}
+
+.MemberL {
+    color: rgb(36, 36, 103);
+}
+
+.TestingMessages {
+    background-color: rgb(177, 176, 211);
+    /* background-color: rgb(215, 235, 247); */
+    color: rgb(27, 36, 40);
+    border: solid 3pt rgb(0, 19, 89);
+    height: 350pt;
+    overflow-y: auto;
+}
+
+.messageTD {
+    vertical-align: top;
+    height: 350pt;
+    border: solid 3pt rgb(77, 98, 176);
+    background-color: black;
+}
+
+.Pad {
+    padding: 5pt;
+}
+
+.yourComment {
+    display: flex;
+    justify-content: flex-end;
+    padding: 3pt;
+}
+
+.comment {
+    display: flex;
+    justify-content: flex-start;
+    padding:3pt;
+}
+
+.CommentDiv1 {
+    width: 70%;
+    border: solid 3pt var(--border_interior);
+    background-color: #828db5;
+}
+
+.CommentDiv2 {
+    border: solid 3pt var(--border_interior);
+    width: 30%;
+    background-color: #828db5;
+}
+
+.CommentBar {
+    width: 80%;
+    height: 15pt;
+}
+
+.CreateComment {
+    border: solid 3pt var(--border_exterior);
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--border_interior);
+}
+
+/* __________ END CHANNEL __________  */
 .test {
     color: #bbbbd5;
     background-image: linear-gradient(to bottom,rgb(241, 241, 255),rgb(22, 22, 33),rgb(22, 22, 33),rgb(63, 63, 63));
+    position: fixed;
 }
 
 .whatisgoingon {
@@ -320,6 +472,7 @@ background-color: #7e7fa6;
 .Talign {
     text-align: center;
 }
+
 
 .GoodLookinButton {
     width: 60pt;
@@ -367,7 +520,7 @@ background-color: #7e7fa6;
 }
 
 .STool {
-    border: solid 3pt white;
+    border: solid 3pt rgb(0, 0, 0);
 }
 
 

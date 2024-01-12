@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 <!---->
+
 {% block title %}Start A Channel{% endblock title %}
 <!---->
 {% block content %}
@@ -11,9 +12,11 @@
       <h3>{{ field.name }}</h3>
       <p>{{ field }}</p>
       {% endfor %}
-      <input type="submit" />
+      <input type="submit" class="CreateButton"/>
       {{ form.errors }}
     </form>
   </div>
 </div>
-{{ error }} {% endblock content %}
+{{ error }} 
+{{ channel_fail }}
+{% endblock content %}
