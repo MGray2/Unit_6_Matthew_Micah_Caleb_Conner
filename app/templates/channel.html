@@ -12,14 +12,63 @@
     text-overflow: ellipsis; /* Show ellipsis (...) for overflowed text */
   }
 </style>
-<div class="">
-  <div class="BobContainer STool">
-<div class="Bob STool">
-<h2>List of members</h2>
-<h3>{{ owner }}(owner)</h3>
-{% for member in members %}
-<h3>{{ member.username }}</h3>
-{% endfor %}
+<table class="STool">
+  <tr>
+    <td>
+
+    </td>
+    <td class="Talign STool">
+      <p>{{ channel.description }}</p>
+    </td>
+    <td>
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      {% for a in all_in%}
+          <a href="{% url 'channels' a.name %}"><button class="ChannelButton BoxBut">{{ a.name }}</button></a>
+      {% endfor %}
+    </td>
+    <td>
+      <div class="">
+        <h4>----------------comments-------------------</h4>
+          <br /><!-- you can remove this-->
+            {% for comment in comments %} 
+              {% if comment.owner.username == request.user.username %}
+                <!-- Your Comment -->
+                <div class="yourComment">
+                  <p>{{ comment.owner.username }}: {{ comment.message }}</p>
+                    {% if comment.owner.profile_picture %}
+                      <img src="{{ comment.owner.profile_picture.url }}" width="40" height="40"/>
+                </div>
+                        {% else %}
+                        <img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40">
+                        {% endif %}
+                        {% else %} 
+                        <!-- Regular Comment -->
+                <div class="comment ">{% if comment.owner.profile_picture %}
+                        <img src="{{ comment.owner.profile_picture.url }}" width="40" height="40"/>
+                        {% else %}
+                      <img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40">
+                    {% endif %}
+                  <p>{{ comment.owner.username }}: {{ comment.message }}</p>
+                </div>
+              {% endif %}
+            {% endfor %}
+          <br />
+        <h4>-------------------------------------------</h4>
+                </div>
+    </td>
+    <td>
+      <h2>List of members</h2>
+      <h3>{{ owner }}(owner)</h3>
+      {% for member in members %}
+      <h3>{{ member.username }}</h3>
+      {% endfor %}
+    </td>
+  </tr>
+</table>
 </div>
 </div>
 <p>{{ channel.description }}</p>
@@ -28,32 +77,6 @@
 <a href="{% url 'settings' channel.name %}"><button>Settings</button></a>
 {% endif %}
 <br />
-<div class="">
-<h4>----------------comments-------------------</h4>
-<br /><!-- you can remove this-->
-{% for comment in comments %} 
-{% if comment.owner.username == request.user.username %}
-<!-- Your Comment -->
-<div class="yourComment">
-  <p>{{ comment.owner.username }}: {{ comment.message }}</p>
-    {% if comment.owner.profile_picture %}
-    <img src="{{ comment.owner.profile_picture.url }}" width="40" height="40"/>
-</div>
-{% else %}
-<img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40">
-{% endif %}
-{% else %} 
-<!-- Regular Comment -->
-<div class="comment ">{% if comment.owner.profile_picture %}<img src="{{ comment.owner.profile_picture.url }}" width="40" height="40"/>
-  {% else %}
-  <img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40">
-  {% endif %}
-<p>{{ comment.owner.username }}: {{ comment.message }}</p>
-</div>
-{% endif %}
-{% endfor %}
-<br />
-<h4>-------------------------------------------</h4>
 <br /><!-- you can remove this-->
 <h3>Make A Comment</h3>
 <form method="POST">
