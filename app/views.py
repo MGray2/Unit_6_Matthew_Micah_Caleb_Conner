@@ -142,6 +142,16 @@ def contact(request):
 @login_required(login_url=login_view)
 def channel_view(request, channel_name):
     try:
+        you = CustomUser.objects.get(username=request.user.username)
+        channel_list = Channel.objects.filter(creator=you)
+        involved_channels = Channel.objects.filter(chat_members=you).exclude(creator=you)
+        C_List = set()
+        for c1 in channel_list:
+            C_List.add(c1)
+        for c2 in involved_channels:
+            C_List.add(c2)
+
+
         channel = Channel.objects.get(name=channel_name)
         channel_comments = Comment.objects.filter(channel=channel)
         you = CustomUser.objects.get(username=request.user.username)
@@ -153,6 +163,7 @@ def channel_view(request, channel_name):
             "owner": channel.creator.username,
             "comments": channel_comments,
             "your_comments": your_comments,
+            "all_in":C_List,
         }
         if request.method == "POST":
             text = request.POST.get("comment_text")

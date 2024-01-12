@@ -4,7 +4,6 @@
 {% block title %}{{ channel.name }}{% endblock title %}
 <!---->
 {% block content %}
-<a href="{% url 'dashboard' %}"><button>Back</button></a>
 <!-- remove --><style>
   select {
     width: 200px; /* Set a fixed width for the dropdown */
@@ -12,57 +11,137 @@
     white-space: nowrap; /* Prevent text from wrapping */
     text-overflow: ellipsis; /* Show ellipsis (...) for overflowed text */
   }
+
+  {% comment %} body {
+    position:fixed;
+  } {% endcomment %}
 </style>
+<table class="ChannelTable">
+  <tr class="GETSMALL">
+    <td>
+      {% if request.user.username == owner %}
+      <a href="{% url 'settings' channel.name %}"><button>Settings</button></a>
+      {% endif %}
+      
+    </td>
+    <td class="Talign">
+      <p>{{ channel.description }}</p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
 
-<h2>List of members</h2>
-<h3>{{ owner }}(owner)</h3>
-{% for member in members %}
-<h3>{{ member.username }}</h3>
-{% endfor %}
-<p>{{ channel.description }}</p>
 
-{% if request.user.username == owner %}
-<a href="{% url 'settings' channel.name %}"><button>Settings</button></a>
-{% endif %}
-<br />
-<h4>----------------comments-------------------</h4>
+    <!--__________ LIST OF CHANNELS __________-->
+    <td class="ChannelTD" rowspan="3" >
+      <div class="List">
+      {% for a in all_in%}
+          <a href="{% url 'channels' a.name %}"><button class="ChannelButton BoxBut">{{ a.name }}</button></a>
+      {% endfor %}
+      </div>
+    </td>
+    <!--__________ END LIST OF CHANNELS __________-->
+
+
+
+
+    <!--__________ LIST OF MESSAGES __________-->
+<td class="messageTD">
+  <div class="TestingMessages">
 <br /><!-- you can remove this-->
 {% for comment in comments %} 
 {% if comment.owner.username == request.user.username %}
+
+
 <!-- Your Comment -->
-<div class="yourComment"><p>{{ comment.owner.username }}: {{ comment.message }}</p>{% if comment.owner.profile_picture %}<img
-src="{{ comment.owner.profile_picture.url }}"
-width="40"
-height="40"
-/></div>{% else %}<img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40">{% endif %}{% else %} 
+<div class="yourComment">
+<p class="NoPicTouch">{{ comment.owner.username }}: {{ comment.message }}</p>
+{% if comment.owner.profile_picture %}
+<img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
+{% else %}
+<img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic">
+</div>
+{% endif %}
+{% else %} 
+
+
+
+
 <!-- Regular Comment -->
-<div class="comment">{% if comment.owner.profile_picture %}<img
-  src="{{ comment.owner.profile_picture.url }}"
-  width="40"
-  height="40"
-/>{% else %}<img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40">{% endif %}
-<p>{{ comment.owner.username }}: {{ comment.message }}</p></div>
+<div class="comment ">
+{% if comment.owner.profile_picture %}
+<img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
+{% else %}
+<img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic">
+{% endif %}
+<p>{{ comment.owner.username }}: {{ comment.message }}</p>
+</div>
 {% endif %}
 {% endfor %}
 <br />
-<h4>-------------------------------------------</h4>
-<br /><!-- you can remove this-->
-<h3>Make A Comment</h3>
-<form method="POST">
-  {% csrf_token %}
-  <input type="text" required name="comment_text" max_length="300" />
-  <input type="submit" />
-</form>
-<h3>Delete Comment</h3>
-<form method="POST">
-  {% csrf_token %}
-  <select name="comment_remove">
-    <option></option>
-    {% for your_comment in your_comments %}
-    <option value="{{your_comment.id}}">{{ your_comment.message }}</option>
-    {% endfor %}
-  </select>
-  <input type="submit" />
-</form>
+</div>
+    </td>
+    <!--__________ END LIST OF MESSAGES __________-->
+
+
+
+
+    <!--__________ LIST OF MEMBERS __________-->
+    <td class="MemberTD" rowspan="3">
+      <div class="List">
+      <h3 class="OwnerL">{{ owner }}</h3>
+      {% for member in members %}
+      <h3 class="MemberL">{{ member.username }}</h3>
+      {% endfor %}
+      </div>
+    </td>
+  </tr>
+  
+  
+  
+  <!--__________ END LIST OF MEMBERS __________-->
+
+
+
+  <tr>
+  <td class="CreateComment">
+    <div class="CommentDiv1 Pad">
+    <h3>Make A Comment</h3>
+      <form method="POST">
+        {% csrf_token %}
+        <input type="text" required name="comment_text" max_length="300" class="CommentBar" />
+        <input type="submit"/>
+      </form>
+    </div>
+    <div class="Pad CommentDiv2">
+      <h3>Delete Comment</h3>
+      <form method="POST">
+        {% csrf_token %}
+        <select name="comment_remove">
+          <option></option>
+          {% for your_comment in your_comments %}
+          <option value="{{your_comment.id}}">{{ your_comment.message }}</option>
+          {% endfor %}
+        </select>
+        <input type="submit" />
+      </form>
+    </div>
+    </td>
+
+
+    
+
+    
+    
+
+    <!--__________ MAKE A COMMENT __________-->
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</div>
+</div>
+<br />
+<br />
 
 {% endblock content %}
