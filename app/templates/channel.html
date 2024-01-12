@@ -12,9 +12,9 @@
     text-overflow: ellipsis; /* Show ellipsis (...) for overflowed text */
   }
 
-  body {
+  {% comment %} body {
     position:fixed;
-  }
+  } {% endcomment %}
 </style>
 <table class="ChannelTable">
   <tr class="GETSMALL">
@@ -33,10 +33,12 @@
 
 
     <!--__________ LIST OF CHANNELS __________-->
-    <td class="ChannelList STool" rowspan="3">
+    <td class="ChannelTD" rowspan="3" >
+      <div class="List">
       {% for a in all_in%}
           <a href="{% url 'channels' a.name %}"><button class="ChannelButton BoxBut">{{ a.name }}</button></a>
       {% endfor %}
+      </div>
     </td>
     <!--__________ END LIST OF CHANNELS __________-->
 
@@ -44,7 +46,7 @@
 
 
     <!--__________ LIST OF MESSAGES __________-->
-<td class="STool messageTD">
+<td class="messageTD">
   <div class="TestingMessages">
 <br /><!-- you can remove this-->
 {% for comment in comments %} 
@@ -68,9 +70,9 @@
 <!-- Regular Comment -->
 <div class="comment ">
 {% if comment.owner.profile_picture %}
-<img src="{{ comment.owner.profile_picture.url }}" width="40" height="40"/>
+<img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
 {% else %}
-<img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40">
+<img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic">
 {% endif %}
 <p>{{ comment.owner.username }}: {{ comment.message }}</p>
 </div>
@@ -85,25 +87,33 @@
 
 
     <!--__________ LIST OF MEMBERS __________-->
-    <td class="MemberList STool" rowspan="3">
-      <h2>List of members</h2>
-      <h3>{{ owner }}(owner)</h3>
+    <td class="MemberTD" rowspan="3">
+      <div class="List">
+      <h3 class="OwnerL">{{ owner }}</h3>
       {% for member in members %}
-      <h3>{{ member.username }}</h3>
+      <h3 class="MemberL">{{ member.username }}</h3>
       {% endfor %}
+      </div>
     </td>
   </tr>
+  
+  
+  
+  <!--__________ END LIST OF MEMBERS __________-->
+
+
+
   <tr>
-  <td class="CreateComment STool">
-    <div class="Pad">
+  <td class="CreateComment">
+    <div class="CommentDiv1 Pad">
     <h3>Make A Comment</h3>
       <form method="POST">
         {% csrf_token %}
-        <input type="text" required name="comment_text" max_length="300" />
-        <input type="submit" />
+        <input type="text" required name="comment_text" max_length="300" class="CommentBar" />
+        <input type="submit"/>
       </form>
     </div>
-    <div>
+    <div class="Pad CommentDiv2">
       <h3>Delete Comment</h3>
       <form method="POST">
         {% csrf_token %}
@@ -119,7 +129,7 @@
     </td>
 
 
-    <!--__________ END LIST OF MEMBERS __________-->
+    
 
     
     

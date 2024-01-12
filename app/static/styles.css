@@ -4,6 +4,8 @@
 :root {
     --darker_blue:#4f4f61;
     --lighter_blue:#6f708f;
+    --border_exterior:#4d62b0;
+    --border_interior: #001359;
 }
 
 
@@ -358,14 +360,16 @@ background-color: #7e7fa6;
 }
 
 .ChannelTable {
-    width: 100%;
-    height: 98%;
+    width: 98%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.ChannelList {
+.ChannelTD {
     width: 15%;
-    overflow-y: auto;
-    vertical-align: top;
+    height: 100%;
+    border: solid 3pt var(--border_exterior);
+    background-color: var(--border_interior)
 }
 
 .testingpic {
@@ -373,14 +377,34 @@ background-color: #7e7fa6;
 }
 
 
-.MemberList {
+.MemberTD {
+    background-color: var(--border_interior);
     width: 15%;
+    border: solid 3pt var(--border_exterior);
+}
+
+.List {
+    background-color: #828db5;
+    border: solid 3pt var(--border_interior);
+    text-align: center;
     overflow-y: auto;
+    height: 425pt;
+}
+
+
+.OwnerL {
+    color: rgb(128, 0, 197);
+}
+
+.MemberL {
+    color: rgb(36, 36, 103);
 }
 
 .TestingMessages {
-    background-color: rgb(208, 208, 208);
-    border: solid 3pt black;
+    background-color: rgb(177, 176, 211);
+    /* background-color: rgb(215, 235, 247); */
+    color: rgb(27, 36, 40);
+    border: solid 3pt rgb(0, 19, 89);
     height: 350pt;
     overflow-y: auto;
 }
@@ -388,6 +412,8 @@ background-color: #7e7fa6;
 .messageTD {
     vertical-align: top;
     height: 350pt;
+    border: solid 3pt rgb(77, 98, 176);
+    background-color: black;
 }
 
 .Pad {
@@ -406,9 +432,28 @@ background-color: #7e7fa6;
     padding:3pt;
 }
 
+.CommentDiv1 {
+    width: 70%;
+    border: solid 3pt var(--border_interior);
+    background-color: #828db5;
+}
+
+.CommentDiv2 {
+    border: solid 3pt var(--border_interior);
+    width: 30%;
+    background-color: #828db5;
+}
+
+.CommentBar {
+    width: 80%;
+    height: 15pt;
+}
+
 .CreateComment {
+    border: solid 3pt var(--border_exterior);
     display: flex;
     justify-content: space-evenly;
+    background-color: var(--border_interior);
 }
 
 /* __________ END CHANNEL __________  */
