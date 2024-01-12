@@ -53,6 +53,22 @@ height="40"
   <input type="text" required name="comment_text" max_length="300" />
   <input type="submit" />
 </form>
+<button id="emojiButton">Emoji</button>
+<div id="emojiBox" style="display: none;">
+  <button class="emoji">😊</button>
+  <button class="emoji">😂</button>
+  <button class="emoji">😭</button>
+  <button class="emoji">😒</button>
+  <button class="emoji">👌</button>
+  <button class="emoji">👍</button>
+  <button class="emoji">❤️</button>
+  <button class="emoji">😎</button>
+  <button class="emoji">🎶</button>
+  <button class="emoji">🤔</button>
+  <button class="emoji">😫</button>
+  <button class="emoji">😡</button>
+</div>
+<script src="{% static "main.js" %}"></script>
 <h3>Delete Comment</h3>
 <form method="POST">
   {% csrf_token %}

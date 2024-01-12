@@ -9,7 +9,7 @@ Done So Far -
 [√] - Added signup, login, dashboard 
 [√] - Superuser
 [ ] - Added more in the about
-[ ] - Got real contact info
+[x] - Got real contact info
 [ ] - Got a delete button
 [ ] - Make Less "White Space"
 [ ] - Mobile friendly?
