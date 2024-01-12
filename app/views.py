@@ -119,6 +119,7 @@ def create_channel(request):
                     description=description,
                     creator=owner,
                 )
+                return redirect("dashboard")
 
     else:
         form = CreateChannelForm()
