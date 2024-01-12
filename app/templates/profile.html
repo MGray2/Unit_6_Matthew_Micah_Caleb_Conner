@@ -1,37 +1,76 @@
-{% extends 'base.html' %} 
-{% load static %} 
-{% block content %}
-  <h1>{{ user.username.title }}'s Profile</h1>
+{% extends 'base.html' %} {% load static %} {% block content %}
+<h1>{{ user.username.title }}'s Profile</h1>
+<h6 class="sensitiveContent" id="userInfo">{{ request.user.username }}</h6>
 
-  <div>
-    {% if user.profile_picture %}
-      <img src="{{ user.profile_picture.url }}" alt="{{ user.username }}" />
-    {% else %}
-      <img src="{% static 'images/dinosaur_profile_default.jpg' %}" alt="{{ user.username }}" />
-    {% endif %}
-  </div>
+<div>
+  {% if user.profile_picture %}
+  <img src="{{ user.profile_picture.url }}" alt="{{ user.username }}" />
+  {% else %}
+  <img
+    src="{% static 'images/dinosaur_profile_default.jpg' %}"
+    alt="{{ user.username }}"
+  />
+  {% endif %}
+</div>
 
-  <form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %} {{ form }}
+  <button type="submit">Save</button>
+</form>
+
+<form method="post">
+  {% csrf_token %}
+  <label for="id_username">Username:</label>
+  <input
+    type="text"
+    name="username"
+    id="id_username"
+    value="{{ user.username }}"
+    required
+  />
+  <br />
+  <label for="id_email">Email:</label>
+  <input
+    type="email"
+    name="email"
+    id="id_email"
+    value="{{ user.email }}"
+    required
+  />
+  <br />
+  <label for="id_first_name">First Name:</label>
+  <input
+    type="text"
+    name="first_name"
+    id="id_first_name"
+    value="{{ user.first_name }}"
+    required
+  />
+  <br />
+  <label for="id_last_name">Last Name:</label>
+  <input
+    type="text"
+    name="last_name"
+    id="id_last_name"
+    value="{{ user.last_name }}"
+    required
+  />
+  <br />
+  <button type="submit">Save Profile</button>
+</form>
+<div>
+  <button id="deleteAccount">Delete Account</button
+  ><!-- Keep both buttons in this div -->
+  <form method="POST">
     {% csrf_token %}
-    {{ form }}
-    <button type="submit">Save</button>
+    <input
+      type="submit"
+      class="sensitiveContent"
+      id="deleteAccountReal"
+      name="d"
+      value="Confirm Delete Account"
+    />
   </form>
+</div>
 
-  <form method="post">
-    {% csrf_token %}
-    <label for="id_username">Username:</label>
-    <input type="text" name="username" id="id_username" value="{{ user.username }}" required>
-    <br>
-    <label for="id_email">Email:</label>
-    <input type="email" name="email" id="id_email" value="{{ user.email }}" required>
-    <br>
-    <label for="id_first_name">First Name:</label>
-    <input type="text" name="first_name" id="id_first_name" value="{{ user.first_name }}" required>
-    <br>
-    <label for="id_last_name">Last Name:</label>
-    <input type="text" name="last_name" id="id_last_name" value="{{ user.last_name }}" required>
-    <br>
-    <button type="submit">Save Profile</button>
-  </form>
-    <a href="{% url 'landing_page' %}"><button>Delete Account</button></a>
-  {% endblock %}
+{% endblock %}
