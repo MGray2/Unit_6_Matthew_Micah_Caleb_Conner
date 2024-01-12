@@ -104,16 +104,22 @@ def logout_view(request):
 
 @login_required(login_url=login_view)
 def create_channel(request):
-    owner = CustomUser.objects.get(username=request.user.username)
+    owner = CustomUser.objects.get(id=request.user.id)
     if request.method == "POST":
         form = CreateChannelForm(request.POST)
         if form.is_valid():
-            Channel.objects.create(
-                name=form.cleaned_data["Name"],
-                description=form.cleaned_data["Description"],
-                creator=owner,
-            )
-            return redirect(dashboard)
+            channel_name = form.cleaned_data["Name"]
+            description = form.cleaned_data["Description"]
+            # stops you from making a channel with the same name
+            if Channel.objects.filter(name=channel_name).exists():
+                ...
+            else:
+                Channel.objects.create(
+                    name=channel_name,
+                    description=description,
+                    creator=owner,
+                )
+
     else:
         form = CreateChannelForm()
 
@@ -225,29 +231,27 @@ def profile(request):
     channels = user.channels.all()
 
     if request.method == "POST":
-        form = ProfilePictureForm(request.POST, request.FILES, instance=user)
-        user_form = UserEditForm(request.POST, instance=user)
-        delete_confirm = request.POST.get("d")
+        combined_form = CombinedProfileForm(request.POST, request.FILES, instance=user)
 
-        if form.is_valid():
-            form.save()
+        if combined_form.is_valid():
+            combined_form.save()
             return redirect("profile")
-        if user_form.is_valid():
-            user_form.save()
-            return redirect("profile")
-        if delete_confirm:
-            target = CustomUser.objects.get(id=request.user.id)
-            logout(request)
-            target.delete()
-            return redirect(landing_page)
+
     else:
-        form = ProfilePictureForm(instance=user)
-        user_form = UserEditForm(instance=user)
+        combined_form = CombinedProfileForm(instance=user)
 
     context = {
         "user": user,
         "channels": channels,
-        "form": form,
-        "user_form": user_form,
+        "combined_form": combined_form,
     }
     return render(request, "profile.html", context)
+
+
+def delete_account(request):
+    delete_confirm = request.POST.get("d")
+    if delete_confirm == "Confirm Delete Account":
+        target = CustomUser.objects.get(id=request.user.id)
+        logout(request)
+        target.delete()
+        return redirect(landing_page)

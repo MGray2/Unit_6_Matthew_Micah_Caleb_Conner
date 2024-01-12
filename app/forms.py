@@ -48,7 +48,16 @@ class ProfilePictureForm(forms.ModelForm):
         model = CustomUser
         fields = ["profile_picture"]
 
+
 class UserEditForm(UserChangeForm):
     class Meta:
         model = CustomUser
-        fields = ['username', 'email', 'first_name', 'last_name']
+        fields = ["username", "email", "first_name", "last_name"]
+
+
+class CombinedProfileForm(ProfilePictureForm, UserEditForm):
+    class Meta(ProfilePictureForm.Meta):
+        fields = ProfilePictureForm.Meta.fields + UserEditForm.Meta.fields
+
+    def __init__(self, *args, **kwargs):
+        super(CombinedProfileForm, self).__init__(*args, **kwargs)
