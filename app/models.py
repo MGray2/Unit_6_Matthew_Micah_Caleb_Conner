@@ -31,7 +31,7 @@ class CustomUser(AbstractUser):
 
 
 class Channel(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     description = models.CharField(max_length=200)
     creator = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     chat_members = models.ManyToManyField(

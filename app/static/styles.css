@@ -587,3 +587,8 @@ button {
 }
 */
 /* Customize styles based on your preferences */
+
+/* Misc */
+.sensitiveContent {
+    display: none;
+}

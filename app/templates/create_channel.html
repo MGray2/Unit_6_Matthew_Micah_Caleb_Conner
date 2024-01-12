@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 <!---->
+
 {% block title %}Start A Channel{% endblock title %}
 <!---->
 {% block content %}
@@ -16,4 +17,6 @@
     </form>
   </div>
 </div>
-{{ error }} {% endblock content %}
+{{ error }} 
+{{ channel_fail }}
+{% endblock content %}
