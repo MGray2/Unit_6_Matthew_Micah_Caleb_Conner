@@ -17,6 +17,7 @@ urlpatterns = [
     path("channels/settings/<str:channel_name>/", channel_settings, name="settings"),
     path("profile/", profile, name="profile"),  # Profile page
     path("delete_acount/", delete_account, name="delete_account"),  # account deletion
+    path("delete_channel/", delete_channel, name="delete_channel"),  # channel deletion
     path("", landing_page, name="landing_page"),  # landing page
 ]
 

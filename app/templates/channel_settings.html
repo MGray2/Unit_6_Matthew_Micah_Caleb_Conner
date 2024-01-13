@@ -1,9 +1,11 @@
 {% extends "base.html" %}
+{% load static %}
 <!---->
 {% block title %}Settings for {{ channel.name }}{% endblock title %}
 <!---->
 {% block content %}
 <h2>Update Your Channel</h2>
+<h6 class="sensitiveContent" id="channelInfo">{{ channel.name }}</h6>
 <form method="POST">
   {% csrf_token %} {% for field in form %}
   <h3>{{ field.name }}</h3>
@@ -34,5 +36,22 @@
     <input type="submit" />
   </select>
 </form>
-
+<div>
+  <button id="deleteChannel">Delete Channel</button>
+  <form method="POST" action={% url "delete_channel" %}>
+    {% csrf_token %}
+  <input
+      type="hidden" 
+      name="d"
+      value="{{ channel.id }}"
+    />
+    <input
+      type="submit"
+      name="cd"
+      value="Confirm Delete Channel"
+      class="sensitiveContent"
+      id="deleteChannelReal"
+    /></form>
+</div>
+<script src={% static "main.js" %}></script>
 {% endblock content %}

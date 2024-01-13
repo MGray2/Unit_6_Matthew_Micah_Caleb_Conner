@@ -145,13 +145,14 @@ def channel_view(request, channel_name):
     try:
         you = CustomUser.objects.get(username=request.user.username)
         channel_list = Channel.objects.filter(creator=you)
-        involved_channels = Channel.objects.filter(chat_members=you).exclude(creator=you)
+        involved_channels = Channel.objects.filter(chat_members=you).exclude(
+            creator=you
+        )
         C_List = set()
         for c1 in channel_list:
             C_List.add(c1)
         for c2 in involved_channels:
             C_List.add(c2)
-
 
         channel = Channel.objects.get(name=channel_name)
         channel_comments = Comment.objects.filter(channel=channel)
@@ -164,7 +165,7 @@ def channel_view(request, channel_name):
             "owner": channel.creator.username,
             "comments": channel_comments,
             "your_comments": your_comments,
-            "all_in":C_List,
+            "all_in": C_List,
         }
         if request.method == "POST":
             text = request.POST.get("comment_text")
@@ -267,3 +268,12 @@ def delete_account(request):
         logout(request)
         target.delete()
         return redirect(landing_page)
+
+
+def delete_channel(request):
+    delete_confirm = request.POST.get("d")
+    print(delete_confirm)
+    if delete_confirm:
+        target = Channel.objects.get(id=delete_confirm)
+        target.delete()
+        return redirect(dashboard)

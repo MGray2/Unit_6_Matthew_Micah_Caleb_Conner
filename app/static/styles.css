@@ -592,3 +592,11 @@ button {
 .sensitiveContent {
     display: none;
 }
+
+/* Emojis */
+#emojiBox {
+    display: none;
+    grid-template-columns: repeat(12, 40px);
+    
+}
+
