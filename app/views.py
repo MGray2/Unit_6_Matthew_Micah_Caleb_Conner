@@ -14,7 +14,7 @@ def landing_page(request):
 
 
 def register(request):
-    form = SignUpForm()  # Initialize the form
+    form = SignUpForm()
 
     if request.method == "POST":
         form = SignUpForm(request.POST)
@@ -49,7 +49,6 @@ def login_view(request):
     return render(request, "login.html", {"form": form})
 
 
-@login_required(login_url=login_view)
 def dashboard(request):
     user_authenticated = request.user.is_authenticated
 
@@ -57,43 +56,25 @@ def dashboard(request):
         user_group = request.user.groups.first()
 
         if user_group:
-            if user_group.name == "User":
-                you = CustomUser.objects.get(username=request.user.username)
-                channel_list = Channel.objects.filter(creator=you)
-                involved_channels = Channel.objects.filter(chat_members=you).exclude(
-                    creator=you
-                )
+            you = CustomUser.objects.get(username=request.user.username)
+            channel_list = Channel.objects.filter(creator=you)
+            involved_channels = Channel.objects.filter(chat_members=you).exclude(
+                creator=you
+            )
 
-                return render(
-                    request,
-                    "dash.html",
-                    {
-                        "user_authenticated": user_authenticated,
-                        "channels": channel_list,
-                        "involved_channels": involved_channels,
-                    },
-                )
-            elif user_group.name == "Admin":
-                you = CustomUser.objects.get(username=request.user.username)
-                channel_list = Channel.objects.filter(creator=you)
-                involved_channels = Channel.objects.filter(chat_members=you).exclude(
-                    creator=you
-                )
+            return render(
+                request,
+                "dash.html",
+                {
+                    "user_authenticated": user_authenticated,
+                    "channels": channel_list,
+                    "involved_channels": involved_channels,
+                },
+            )
 
-                return render(
-                    request,
-                    "dash.html",
-                    {
-                        "user_authenticated": user_authenticated,
-                        "channels": channel_list,
-                        "involved_channels": involved_channels,
-                    },
-                )
-
-        # For other groups or no group specified, show the regular dashboard
         return render(request, "dash.html", {"user_authenticated": user_authenticated})
     else:
-        return render(request, "login.html")  # Redirect to login if not authenticated
+        return render(request, "login.html")
 
 
 # logging in is not required
@@ -144,6 +125,7 @@ def contact(request):
 def channel_view(request, channel_name):
     try:
         you = CustomUser.objects.get(username=request.user.username)
+        you_admin = you.groups.filter(name="Admin").exists
         channel_list = Channel.objects.filter(creator=you)
         involved_channels = Channel.objects.filter(chat_members=you).exclude(
             creator=you
@@ -166,6 +148,7 @@ def channel_view(request, channel_name):
             "comments": channel_comments,
             "your_comments": your_comments,
             "all_in": C_List,
+            "if_admin": you_admin,
         }
         if request.method == "POST":
             text = request.POST.get("comment_text")

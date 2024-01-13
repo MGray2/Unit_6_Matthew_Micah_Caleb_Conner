@@ -19,7 +19,7 @@
 <table class="ChannelTable">
   <tr class="GETSMALL">
     <td>
-      {% if request.user.username == owner %}
+      {% if request.user.username == owner or if_admin %}
       <a href="{% url 'settings' channel.name %}"><button>Settings</button></a>
       {% endif %}
       
