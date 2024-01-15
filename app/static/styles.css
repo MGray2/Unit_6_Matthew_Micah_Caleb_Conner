@@ -531,6 +531,23 @@ background-color: #7e7fa6;
 }
 
 /* __________ END CHANNEL __________  */
+
+/* __________ PROFILE __________ */
+
+.ProfileTable {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+
+
+
+/* __________ END PROFILE __________ */
+
 .test {
     color: #bbbbd5;
     background-image: linear-gradient(to bottom,rgb(241, 241, 255),rgb(22, 22, 33),rgb(22, 22, 33),rgb(63, 63, 63));
