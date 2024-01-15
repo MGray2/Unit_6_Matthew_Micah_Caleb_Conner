@@ -2,36 +2,38 @@
 {% block title %}Profile{% endblock title %}
 <!---->
 {% block content %}
-<div>
-  <div>
+<br>
+<div class="ChannelSettings1">
+  <div class="ChannelSettings2">
 <h1>{{ user.username.title }}'s Profile</h1>
 <h6 class="sensitiveContent" id="userInfo">{{ request.user.username }}</h6>
-
 <div>
   {% if user.profile_picture %}
-  <img src="{{ user.profile_picture.url }}" alt="{{ user.username }}" />
+  <img src="{{ user.profile_picture.url }}" alt="{{ user.username }}" width="40pt"/>
   {% else %}
-  <img
-    src="{% static 'images/dinosaur_profile_default.jpg' %}"
-    alt="{{ user.username }}"
-  />
+  <img src="{% static 'images/dinosaur_profile_default.jpg' %}" alt="{{ user.username }}" width="100pt"/>
   {% endif %}
 </div>
-
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
-  
-  Profile Picture: {{ combined_form.profile_picture }}<br />
-  First Name: {{ combined_form.first_name }}<br />
-  Last Name: {{ combined_form.last_name }}<br />
-  Username: {{ combined_form.username }}<br />
-  Email: {{ combined_form.email }}<br/>
-  
-  
+  <h3>Profile Picture: </h3>
+  {{ combined_form.profile_picture }}
+  <h3>First Name: </h3>
+  {{ combined_form.first_name }}
+  <h3>Last Name: </h3>
+  {{ combined_form.last_name }}
+  <h3>Username: </h3>
+  {{ combined_form.username }}
+  <h3>Email: </h3>
+  {{ combined_form.email }}
+  <br><br>
   <button type="submit">Update Profile</button>
 </form>
-<div>
-  <button id="deleteAccount">Delete Account</button
+<br>
+<div class="DeleDiv1">
+<div class="DeleDiv2">
+  <br>
+  <button id="deleteAccount" class="DeleteButton">Delete Account</button
   ><!-- Keep both buttons in this div -->
   <form method="POST" action="{% url "delete_account" %}">
     {% csrf_token %}
@@ -43,6 +45,8 @@
       value="Confirm Delete Account"
     />
   </form>
+  <br>
+</div>
 </div>
 
 <script src={% static "main.js" %}></script>
