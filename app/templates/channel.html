@@ -35,6 +35,7 @@
     <!--__________ LIST OF CHANNELS __________-->
     <td class="ChannelTD" rowspan="3" >
       <div class="List">
+        <h2 class="ListName">CHANNELS</h2>
       {% for a in all_in%}
           <a href="{% url 'channels' a.name %}"><button class="ChannelButton BoxBut">{{ a.name }}</button></a>
       {% endfor %}
@@ -49,36 +50,100 @@
 <td class="messageTD">
   <div class="TestingMessages">
 <br /><!-- you can remove this-->
-{% for comment in comments %} 
-{% if comment.owner.username == request.user.username %}
+{% for comment in comments %}
+
 
 
 <!-- Your Comment -->
-<div class="yourComment">
+{% if comment.owner.username == request.user.username %}
+<div class="yourComment ">
+<table class=" CommentTable">
+  <tr>
+    <td class="NoPad">
+      {% if comment.owner.profile_picture %}
+      <img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
+      {% else %}
+      <img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic">
+      {% endif %}
+      
+    </td>
+  </tr>
+  <tr>
+    <td class="NoPad">
+      {% if comment.owner.username == owner %}
+      <h4 class="OwnerL NoPad2">{{ comment.owner.username }}<h4>
+      {% else %}
+      <h4 class="MemberL NoPad2">{{ comment.owner.username }}<h4>
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td class="TestingTD ">
+      <p class="NoPad">{{ comment.message }}</p>
+    </td>
+  </tr>
+</table>
+</div>
+
+{% comment %} <div class="yourComment">
 <p class="NoPicTouch">{{ comment.owner.username }}: {{ comment.message }}</p>
 {% if comment.owner.profile_picture %}
 <img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
 {% else %}
 <img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic">
 </div>
-{% endif %}
+{% endif %} {% endcomment %}
+
+
+
 {% else %} 
 
 
 
 
 <!-- Regular Comment -->
+
+
 <div class="comment ">
+<table class=" CommentTable">
+  <tr>
+    <td class="NoPad2">
+      {% if comment.owner.profile_picture %}
+      <img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
+      {% else %}
+      <img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic">
+      {% endif %}
+      
+    </td>
+  </tr>
+  <tr>
+    <td class="NoPad2">
+      {% if comment.owner.username == owner %}
+      <h4 class="OwnerL NoPad2">{{ comment.owner.username }}<h4>
+      {% else %}
+      <h4 class="MemberL NoPad2">{{ comment.owner.username }}<h4>
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td class="TestingTD ">
+      <p class="NoPad2">{{ comment.message }}</p>
+    </td>
+  </tr>
+</table>
+</div>
+
+{% comment %} <div class="comment ">
 {% if comment.owner.profile_picture %}
 <img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
 {% else %}
 <img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic">
 {% endif %}
 <p>{{ comment.owner.username }}: {{ comment.message }}</p>
-</div>
+</div> {% endcomment %}
 {% endif %}
 {% endfor %}
-<br />
+<br>
 </div>
     </td>
     <!--__________ END LIST OF MESSAGES __________-->
@@ -89,6 +154,7 @@
     <!--__________ LIST OF MEMBERS __________-->
     <td class="MemberTD" rowspan="3">
       <div class="List">
+        <h2 class="ListName">MEMBERS</h2>
       <h3 class="OwnerL">{{ owner }}</h3>
       {% for member in members %}
       <h3 class="MemberL">{{ member.username }}</h3>
