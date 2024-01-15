@@ -70,7 +70,11 @@
   </tr>
   <tr>
     <td class="NoPad">
-      <h4 class="OwnerL NoPad">{{ comment.owner.username }}<h4>
+      {% if comment.owner.username == owner %}
+      <h4 class="OwnerL NoPad2">{{ comment.owner.username }}<h4>
+      {% else %}
+      <h4 class="MemberL NoPad2">{{ comment.owner.username }}<h4>
+      {% endif %}
     </td>
   </tr>
   <tr>
@@ -114,7 +118,11 @@
   </tr>
   <tr>
     <td class="NoPad2">
+      {% if comment.owner.username == owner %}
       <h4 class="OwnerL NoPad2">{{ comment.owner.username }}<h4>
+      {% else %}
+      <h4 class="MemberL NoPad2">{{ comment.owner.username }}<h4>
+      {% endif %}
     </td>
   </tr>
   <tr>
