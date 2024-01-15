@@ -2,6 +2,8 @@
 {% block title %}Profile{% endblock title %}
 <!---->
 {% block content %}
+<div>
+  <div>
 <h1>{{ user.username.title }}'s Profile</h1>
 <h6 class="sensitiveContent" id="userInfo">{{ request.user.username }}</h6>
 
@@ -44,4 +46,6 @@
 </div>
 
 <script src={% static "main.js" %}></script>
+</div>
+</div>
 {% endblock %}

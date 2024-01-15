@@ -4,6 +4,9 @@
 {% block title %}Settings for {{ channel.name }}{% endblock title %}
 <!---->
 {% block content %}
+<br><br><br>
+<div class="ChannelSettings1">
+  <div class="ChannelSettings2">
 <h2>Update Your Channel</h2>
 <h6 class="sensitiveContent" id="channelInfo">{{ channel.name }}</h6>
 <form method="POST">
@@ -17,27 +20,31 @@
 <h2>Add People</h2>
 <form method="POST">
   {% csrf_token %}
-  <select name="selected_person">
+  <select name="selected_person" class="SelectAR">
     <option></option>
     {% for person in people_add %}
     <option>{{ person.username }}</option>
     {% endfor %}
-    <input type="submit" />
+    
   </select>
+  <input type="submit" />
 </form>
 <h2>Remove People</h2>
 <form method="POST">
   {% csrf_token %}
-  <select name="person_to_remove">
+  <select name="person_to_remove" class="SelectAR">
     <option></option>
     {% for person in people_rm %}
     <option>{{ person.username }}</option>
-    {% endfor %}
-    <input type="submit" />
+    {% endfor %}    
   </select>
+  <input type="submit" />
 </form>
-<div>
-  <button id="deleteChannel">Delete Channel</button>
+<br><br>
+<div class="DeleDiv1">
+  <div class="DeleDiv2">
+  <h2>Danger Zone</h2>
+  <button id="deleteChannel" class="DeleteButton">Delete Channel</button>
   <form method="POST" action={% url "delete_channel" %}>
     {% csrf_token %}
   <input
@@ -54,4 +61,7 @@
     /></form>
 </div>
 <script src={% static "main.js" %}></script>
+<br><br>
+</div>
+</div>
 {% endblock content %}

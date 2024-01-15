@@ -279,9 +279,54 @@ background-color: #7e7fa6;
 }
 
 
+.ChannelSettings1 {
+    padding: 5pt;
+    text-align: center;
+    border-radius: 20pt;
+    margin-right: auto;
+    margin-left: auto;
+    border: rgb(42, 42, 60) solid 3pt;
+    background-color: #4f4f61;
+    width: 40%;
+}
 
+.ChannelSettings2 {
+    height: 99%;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #6f708f;
+    border: solid 3pt rgb(159, 159, 209);
+}
 
+.DeleDiv1 {
+    border-top: dashed 3pt rgb(218, 0, 0);
+    padding: 5pt;
+    background-color: rgb(22, 26, 36);
+    color: rgb(255, 109, 109);
+}
 
+.DeleteButton {
+    background-color: rgb(143, 0, 0);
+    color: rgb(255, 148, 148);
+    font-size: 15pt;
+    width: 110pt;
+    height: 40pt;
+    border-radius: 20pt;
+    border: solid 3pt red;
+    transition: ease 0.3s;
+}
+
+.DeleteButton:hover {
+    cursor: pointer;
+    background-color: red;
+    border: solid 3pt rgb(139, 0, 0);
+    color: rgb(255, 198, 198);
+}
+
+.SelectAR {
+    width: 100pt;
+}
 
 
 /*__________  END CREATE CHANNEL __________ */
