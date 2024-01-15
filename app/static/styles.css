@@ -383,6 +383,12 @@ background-color: #7e7fa6;
     border: solid 3pt var(--border_exterior);
 }
 
+
+.ListName {
+    color: white;
+    border-bottom: solid 3pt var(--border_interior);
+}
+
 .List {
     background-color: #828db5;
     border: solid 3pt var(--border_interior);
@@ -394,6 +400,18 @@ background-color: #7e7fa6;
 
 .OwnerL {
     color: rgb(128, 0, 197);
+}
+
+.NoPad {
+    text-align: right;
+    padding: 0;
+    margin: 0;
+}
+
+.NoPad2 {
+    text-align: left;
+    padding: 0;
+    margin: 0;
 }
 
 .MemberL {
@@ -430,6 +448,17 @@ background-color: #7e7fa6;
     display: flex;
     justify-content: flex-start;
     padding:3pt;
+}
+
+.CommentTable {
+    max-width: 100pt;
+    width: 100pt;
+    word-wrap: break-word;
+}
+
+.TestingTD {
+    max-width: 500pt;
+    word-wrap: break-word;
 }
 
 .CommentDiv1 {
@@ -472,6 +501,7 @@ background-color: #7e7fa6;
 .Talign {
     text-align: center;
 }
+
 
 
 .GoodLookinButton {
