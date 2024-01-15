@@ -9,15 +9,17 @@
 <h6 class="sensitiveContent" id="userInfo">{{ request.user.username }}</h6>
 <div>
   {% if user.profile_picture %}
-  <img src="{{ user.profile_picture.url }}" alt="{{ user.username }}" width="40pt"/>
+  <img src="{{ user.profile_picture.url }}" alt="{{ user.username }}" width="40pt" class="PicBorder"/>
   {% else %}
   <img src="{% static 'images/dinosaur_profile_default.jpg' %}" alt="{{ user.username }}" width="100pt"/>
   {% endif %}
 </div>
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
+  <div class="BottomBar">
   <h3>Profile Picture: </h3>
   {{ combined_form.profile_picture }}
+  </div>
   <h3>First Name: </h3>
   {{ combined_form.first_name }}
   <h3>Last Name: </h3>
@@ -37,13 +39,7 @@
   ><!-- Keep both buttons in this div -->
   <form method="POST" action="{% url "delete_account" %}">
     {% csrf_token %}
-    <input
-      type="submit"
-      class="sensitiveContent"
-      id="deleteAccountReal"
-      name="d"
-      value="Confirm Delete Account"
-    />
+    <input type="submit" class="sensitiveContent ConfirmDeleteButton" id="deleteAccountReal" name="d" value="Confirm Delete Account"/>
   </form>
   <br>
 </div>

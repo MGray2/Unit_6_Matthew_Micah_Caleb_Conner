@@ -47,18 +47,8 @@
   <button id="deleteChannel" class="DeleteButton">Delete Channel</button>
   <form method="POST" action={% url "delete_channel" %}>
     {% csrf_token %}
-  <input
-      type="hidden" 
-      name="d"
-      value="{{ channel.id }}"
-    />
-    <input
-      type="submit"
-      name="cd"
-      value="Confirm Delete Channel"
-      class="sensitiveContent"
-      id="deleteChannelReal"
-    /></form>
+  <input type="hidden"  name="d" value="{{ channel.id }}"/>
+  <input type="submit" name="cd" value="Confirm Delete Channel" class="sensitiveContent ConfirmDeleteButton" id="deleteChannelReal"/></form>
 </div>
 <script src={% static "main.js" %}></script>
 <br><br>

@@ -315,6 +315,9 @@ background-color: #7e7fa6;
     border-radius: 20pt;
     border: solid 3pt red;
     transition: ease 0.3s;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .DeleteButton:hover {
@@ -324,8 +327,39 @@ background-color: #7e7fa6;
     color: rgb(255, 198, 198);
 }
 
+.ConfirmDeleteButton {
+    background-color: rgb(143, 0, 0);
+    color: rgb(255, 148, 148);
+    font-size: 15pt;
+    width: 220pt;
+    height: 40pt;
+    border-radius: 20pt;
+    border: solid 3pt red;
+    transition: ease 0.3s;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.ConfirmDeleteButton:hover {
+    cursor: pointer;
+    background-color: red;
+    border: solid 3pt rgb(139, 0, 0);
+    color: rgb(255, 198, 198);
+}
+
 .SelectAR {
     width: 100pt;
+}
+
+.BottomBar {
+    padding: 3pt;
+    border-bottom: solid 3pt rgb(159, 159, 209);
+}
+
+.PicBorder {
+    border: solid 3pt rgb(159, 159, 209);
+    padding: 15pt;
 }
 
 
@@ -487,12 +521,14 @@ background-color: #7e7fa6;
     display: flex;
     justify-content: flex-end;
     padding: 3pt;
+    border-bottom: var(--border_interior) dashed 1pt;
 }
 
 .comment {
     display: flex;
     justify-content: flex-start;
     padding:3pt;
+    border-bottom: var(--border_interior) dashed 1pt;
 }
 
 .CommentTable {
@@ -626,7 +662,6 @@ html {
     background-size: cover;
     background-image: linear-gradient(to bottom,rgb(22, 22, 33),rgb(22, 22, 33),rgb(22, 22, 33),rgb(63, 63, 63));
     color: white;
-    height: 100%;
     margin: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -683,6 +718,8 @@ button {
 /* Misc */
 .sensitiveContent {
     display: none;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 /* Emojis */
