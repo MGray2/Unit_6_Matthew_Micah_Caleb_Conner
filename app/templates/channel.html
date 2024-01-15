@@ -158,9 +158,15 @@
         {% csrf_token %}
         <select name="comment_remove">
           <option></option>
+          {% if if_admin %}
+          {% for comment in comments %}
+          <option value="{{comment.id}}">{{comment.owner.username}}: {{ comment.message }}</option>
+          {% endfor %}
+          {% else %}
           {% for your_comment in your_comments %}
           <option value="{{your_comment.id}}">{{ your_comment.message }}</option>
           {% endfor %}
+          {% endif %}
         </select>
         <input type="submit" />
       </form>
