@@ -91,6 +91,11 @@ def create_channel(request):
         if form.is_valid():
             channel_name = form.cleaned_data["Name"]
             description = form.cleaned_data["Description"]
+            safe_mode = form.cleaned_data["SafeMode"]
+            if description:
+                pass
+            else:
+                description = ""
             # stops you from making a channel with the same name
             if Channel.objects.filter(name=channel_name).exists():
                 ...
@@ -99,6 +104,7 @@ def create_channel(request):
                     name=channel_name,
                     description=description,
                     creator=owner,
+                    safe_mode=safe_mode,
                 )
                 return redirect("dashboard")
 

@@ -4,19 +4,24 @@
 {% block title %}Start A Channel{% endblock title %}
 <!---->
 {% block content %}
-<br><br><br><br>
+<br /><br /><br /><br />
 <div class="CreateDiv1">
   <div class="CreateDiv2">
     <form method="POST">
-      {% csrf_token %} {% for field in form %}
+      {% csrf_token %} {% for field in form %} {% if field.name == "SafeMode" %}
+      <h3>{{ field.name }}</h3>
+      <p
+        title="Censors most strong language in comments, does not affect existing comments."
+      >
+        {{ field }}
+      </p>
+      {% else %}
       <h3>{{ field.name }}</h3>
       <p>{{ field }}</p>
-      {% endfor %}
-      <input type="submit" class="CreateButton"/>
+      {% endif %} {% endfor %}
+      <input type="submit" class="CreateButton" />
       {{ form.errors }}
     </form>
   </div>
 </div>
-{{ error }} 
-{{ channel_fail }}
-{% endblock content %}
+{{ error }} {{ channel_fail }} {% endblock content %}

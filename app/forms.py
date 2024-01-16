@@ -30,7 +30,12 @@ class LoginForm(forms.Form):
 
 class CreateChannelForm(forms.Form):
     Name = forms.CharField(max_length=50)
-    Description = forms.CharField(max_length=200)
+    Description = forms.CharField(max_length=200, required=False)
+    SAFE_MODE_CHOICES = [
+        ("Disabled", "Disabled"),
+        ("Enabled", "Enabled"),
+    ]
+    SafeMode = forms.ChoiceField(choices=SAFE_MODE_CHOICES, required=False)
 
 
 class UpdateChannelForm(forms.Form):

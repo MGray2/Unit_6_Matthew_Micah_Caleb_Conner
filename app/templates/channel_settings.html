@@ -8,6 +8,7 @@
 <div class="ChannelSettings1">
   <div class="ChannelSettings2">
 <h2>Update Your Channel</h2>
+<h5>*Leave fields blank for no change.</h5>
 <h6 class="sensitiveContent" id="channelInfo">{{ channel.name }}</h6>
 <form method="POST">
   {% csrf_token %} {% for field in form %}
