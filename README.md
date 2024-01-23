@@ -24,7 +24,7 @@ Password: password
 
 test users
 
-user1
+user1 (admin)
 ncNhZFyW
 
 user2
@@ -36,5 +36,8 @@ user3
 user4
 EUGhdrcT
 
-user5
+user5 (owns their own channel)
 HHYu8MyW
+
+sean_ennis
+Reading_time
