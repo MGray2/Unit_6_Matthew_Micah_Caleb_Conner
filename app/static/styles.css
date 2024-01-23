@@ -365,7 +365,10 @@ background-color: #7e7fa6;
 
 /*__________  END CREATE CHANNEL __________ */
 
-
+.JustMargin {
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /*__________ ABOUT US & CONTACTS __________ */
 
