@@ -9,9 +9,9 @@
 <h6 class="sensitiveContent" id="userInfo">{{ request.user.username }}</h6>
 <div>
   {% if user.profile_picture %}
-  <img src="{{ user.profile_picture.url }}" alt="{{ user.username }}" width="40pt" class="PicBorder"/>
+  <img src="{{ user.profile_picture.url }}" alt="{{ user.username }}" width="60pt" class="PicBorder"/>
   {% else %}
-  <img src="{% static 'images/dinosaur_profile_default.jpg' %}" alt="{{ user.username }}" width="100pt"/>
+  <img src="{% static 'images/dinosaur_profile_default.jpg' %}" alt="{{ user.username }}" width="60pt"/>
   {% endif %}
 </div>
 <form method="post" enctype="multipart/form-data">

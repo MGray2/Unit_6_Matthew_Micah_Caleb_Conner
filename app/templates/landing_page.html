@@ -1,5 +1,5 @@
 {% extends "SignRegister_base.html" %}
-
+{% load static %} 
 {% block title %}Welcome!{% endblock %}
 
 {% block content %}
@@ -11,4 +11,9 @@
             <a href="{% url 'login' %}" class="login-button">Login to Explore</a>
         </div>
     </div>
+    <br>
+    <br>
+    <center>
+    <img src={% static "images/potion.png" %} width="250pt"/>
+    </center>
 {% endblock %}
