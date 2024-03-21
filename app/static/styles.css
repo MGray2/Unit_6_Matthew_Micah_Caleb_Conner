@@ -724,7 +724,24 @@ button {
   display: none;
 }
 
+.MobileChannelTable {
+  width: 50%;
+}
+
+.MobileChannels {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  display: none;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 500px) {
+  .MobileChannels {
+    display: flex;
+  }
+
   .MobileInv {
     height: 20pt;
     display: block;
@@ -743,6 +760,23 @@ button {
   }
 
   .InvolvedChannels {
+    width: 100%;
+  }
+
+  .ChannelTable {
+    display: none;
+  }
+
+  .List {
+    width: 170pt;
+    height: 200pt;
+  }
+
+  .CommentDiv2 {
+    width: 170pt;
+  }
+
+  .CommentDiv1 {
     width: 100%;
   }
 }
