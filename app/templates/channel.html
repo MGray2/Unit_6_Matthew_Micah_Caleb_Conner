@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 <!---->
-{% block title %}{{ channel.name }}{% endblock title %}
+{% block title %}{{ channel.name }}{% endblock title %} 
 <!---->
 {% block content %}
 <!-- remove --><style>
@@ -16,6 +16,7 @@
     position:fixed;
   } {% endcomment %}
 </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <table class="ChannelTable">
   <tr class="GETSMALL">
     <td>
@@ -84,18 +85,6 @@
   </tr>
 </table>
 </div>
-
-{% comment %} <div class="yourComment">
-<p class="NoPicTouch">{{ comment.owner.username }}: {{ comment.message }}</p>
-{% if comment.owner.profile_picture %}
-<img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
-{% else %}
-<img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic">
-</div>
-{% endif %} {% endcomment %}
-
-
-
 {% else %} 
 
 
@@ -254,5 +243,423 @@
 </div>
 <br />
 <br />
+
+<!------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------>
+
+
+<div class="MobileChannels">
+<table class="MobileChannelTable">
+  <tr>
+    <td>
+      {% if request.user.username == owner or if_admin %}
+      <a href="{% url 'settings' channel.name %}"><button>Settings</button></a>
+      {% endif %}
+      <p>{{ channel.description }}</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="List">
+        <h2 class="ListName">CHANNELS</h2>
+        {% for a in all_in%}
+          <a href="{% url 'channels' a.name %}"><button class="ChannelButton BoxBut">{{ a.name }}</button></a>
+      {% endfor %}
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <br>
+    <td>
+      <div class="List">
+        <h2 class="ListName">MEMBERS</h2>
+      <h3 class="OwnerL">{{ owner }}</h3>
+      {% for member in members %}
+      <h3 class="MemberL">{{ member.username }}</h3>
+      {% endfor %}
+      </div>
+    </td>
+  </tr>
+<tr>
+  <td class="messageTD">
+    <div class="TestingMessages">
+  <br /><!-- you can remove this-->
+  {% for comment in comments %}
+  
+  
+  
+  <!-- Your Comment -->
+  {% if comment.owner.username == request.user.username %}
+  <div class="yourComment">
+  <table class=" CommentTable">
+    <tr>
+      <td class="NoPad">
+        {% if comment.owner.profile_picture %}
+        <img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
+        {% else %}
+        <img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic">
+        {% endif %}
+        
+      </td>
+    </tr>
+    <tr>
+      <td class="NoPad">
+        {% if comment.owner.username == owner %}
+        <h4 class="OwnerL NoPad">{{ comment.owner.username }}<h4>
+        {% else %}
+        <h4 class="MemberL NoPad">{{ comment.owner.username }}<h4>
+        {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td class="TestingTD ">
+        <p class="NoPad">{{ comment.message }}</p>
+      </td>
+    </tr>
+  </table>
+  </div>
+  {% else %} 
+  
+  
+  
+  
+  <!-- Regular Comment -->
+  
+  
+  <div class="comment">
+  <table class=" CommentTable">
+    <tr>
+      <td class="NoPad2">
+        {% if comment.owner.profile_picture %}
+        <img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
+        {% else %}
+        <img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic">
+        {% endif %}
+        
+      </td>
+    </tr>
+    <tr>
+      <td class="NoPad2">
+        {% if comment.owner.username == owner %}
+        <h4 class="OwnerL NoPad2">{{ comment.owner.username }}<h4>
+        {% else %}
+        <h4 class="MemberL NoPad2">{{ comment.owner.username }}<h4>
+        {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td class="TestingTD ">
+        <p class="NoPad2">{{ comment.message }}</p>
+      </td>
+    </tr>
+  </table>
+  </div>
+  {% endif %}
+  {% endfor %}
+  <br>
+  </div>
+      </td>
+</tr>
+<tr>
+  <td class="CreateComment">
+    <div class="CommentDiv1 Pad">
+    <h3>Make A Comment</h3>
+      <form method="POST">
+        {% csrf_token %}
+        <input type="text" required name="comment_text" max_length="300" class="CommentBar" />
+        <input type="submit"/>
+      </form>
+      <button id="emojiButton">Emoji</button>
+<div id="emojiBox">
+  <button class="emoji">😊</button><!--0-->
+  <button class="emoji">😂</button><!--1-->
+  <button class="emoji">😭</button><!--2-->
+  <button class="emoji">😒</button><!--3-->
+  <button class="emoji">👌</button><!--4-->
+  <button class="emoji">👍</button><!--5-->
+  <button class="emoji">❤️</button><!--6-->
+  <button class="emoji">😎</button><!--7-->
+  <button class="emoji">🎶</button><!--8-->
+  <button class="emoji">🤔</button><!--9-->
+  <button class="emoji">😫</button><!--10-->
+  <button class="emoji">😡</button><!--11-->
+  <button class="emoji">🫡</button><!--12-->
+  <button class="emoji">😏</button><!--13-->
+  <button class="emoji">😴</button><!--14-->
+  <button class="emoji">😍</button><!--15-->
+  <button class="emoji">🤑</button><!--16-->
+  <button class="emoji">🤢</button><!--17-->
+  <button class="emoji">😤</button><!--18-->
+  <button class="emoji">🤡</button><!--19-->
+  <button class="emoji">🫢</button><!--20-->
+  <button class="emoji">🤓</button><!--21-->
+  <button class="emoji">😈</button><!--22-->
+  <button class="emoji">🥱</button><!--23-->
+  <button class="emoji">💀</button><!--24-->
+  <button class="emoji">🥶</button><!--25-->
+  <button class="emoji">👽</button><!--26-->
+  <button class="emoji">👀</button><!--27-->
+  <button class="emoji">🐎</button><!--28-->
+  <button class="emoji">🤯</button><!--29-->
+  <button class="emoji">😵</button><!--30-->
+  <button class="emoji">😱</button><!--31-->
+  <button class="emoji">😇</button><!--32-->
+  <button class="emoji">🐶</button><!--33-->
+  <button class="emoji">🐱</button><!--34-->
+  <button class="emoji">🥳</button><!--35-->
+</div>
+    </div>
+  </td>
+  </tr>
+  <tr>
+    <td>
+    <div class="CommentDiv2">
+      <h3>Delete Comment</h3>
+      <form method="POST">
+        {% csrf_token %}
+        <select name="comment_remove">
+          <option></option>
+          {% if if_admin %}
+          {% for comment in comments %}
+          <option value="{{comment.id}}">{{comment.owner.username}}: {{ comment.message }}</option>
+          {% endfor %}
+          {% else %}
+          {% for your_comment in your_comments %}
+          <option value="{{your_comment.id}}">{{ your_comment.message }}</option>
+          {% endfor %}
+          {% endif %}
+        </select>
+        <input type="submit" />
+      </form>
+    </div>
+    </td>
+</tr>
+
+</table>
+</div>
+
+
+{% comment %} 
+
+<table class="ChannelTable">
+  <tr class="GETSMALL">
+    <td>
+      {% if request.user.username == owner or if_admin %}
+      <a href="{% url 'settings' channel.name %}"><button>Settings</button></a>
+      {% endif %}
+      
+    </td>
+    <td class="Talign">
+      <p>{{ channel.description }}</p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+
+
+    <!--__________ LIST OF CHANNELS __________-->
+    <td class="ChannelTD" rowspan="3" >
+      <div class="List">
+        <h2 class="ListName">CHANNELS</h2>
+      {% for a in all_in%}
+          <a href="{% url 'channels' a.name %}"><button class="ChannelButton BoxBut">{{ a.name }}</button></a>
+      {% endfor %}
+      </div>
+    </td>
+    <!--__________ END LIST OF CHANNELS __________-->
+
+
+
+
+    <!--__________ LIST OF MESSAGES __________-->
+<td class="messageTD">
+  <div class="TestingMessages">
+<br /><!-- you can remove this-->
+{% for comment in comments %}
+
+
+
+<!-- Your Comment -->
+{% if comment.owner.username == request.user.username %}
+<div class="yourComment">
+<table class=" CommentTable">
+  <tr>
+    <td class="NoPad">
+      {% if comment.owner.profile_picture %}
+      <img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
+      {% else %}
+      <img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic">
+      {% endif %}
+      
+    </td>
+  </tr>
+  <tr>
+    <td class="NoPad">
+      {% if comment.owner.username == owner %}
+      <h4 class="OwnerL NoPad">{{ comment.owner.username }}<h4>
+      {% else %}
+      <h4 class="MemberL NoPad">{{ comment.owner.username }}<h4>
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td class="TestingTD ">
+      <p class="NoPad">{{ comment.message }}</p>
+    </td>
+  </tr>
+</table>
+</div>
+{% else %} 
+
+
+
+
+<!-- Regular Comment -->
+
+
+<div class="comment">
+<table class=" CommentTable">
+  <tr>
+    <td class="NoPad2">
+      {% if comment.owner.profile_picture %}
+      <img src="{{ comment.owner.profile_picture.url }}" width="40" height="40" class="testingpic"/>
+      {% else %}
+      <img src="{% static "images/dinosaur_profile_default.jpg" %}" width="40" height="40" class="testingpic">
+      {% endif %}
+      
+    </td>
+  </tr>
+  <tr>
+    <td class="NoPad2">
+      {% if comment.owner.username == owner %}
+      <h4 class="OwnerL NoPad2">{{ comment.owner.username }}<h4>
+      {% else %}
+      <h4 class="MemberL NoPad2">{{ comment.owner.username }}<h4>
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td class="TestingTD ">
+      <p class="NoPad2">{{ comment.message }}</p>
+    </td>
+  </tr>
+</table>
+</div>
+{% endif %}
+{% endfor %}
+<br>
+</div>
+    </td>
+    <!--__________ END LIST OF MESSAGES __________-->
+
+
+
+
+    <!--__________ LIST OF MEMBERS __________-->
+    <td class="MemberTD" rowspan="3">
+      <div class="List">
+        <h2 class="ListName">MEMBERS</h2>
+      <h3 class="OwnerL">{{ owner }}</h3>
+      {% for member in members %}
+      <h3 class="MemberL">{{ member.username }}</h3>
+      {% endfor %}
+      </div>
+    </td>
+  </tr>
+  
+  
+  
+  <!--__________ END LIST OF MEMBERS __________-->
+
+
+
+  <tr>
+  <td class="CreateComment">
+    <div class="CommentDiv1 Pad">
+    <h3>Make A Comment</h3>
+      <form method="POST">
+        {% csrf_token %}
+        <input type="text" required name="comment_text" max_length="300" class="CommentBar" />
+        <input type="submit"/>
+      </form>
+      <button id="emojiButton">Emoji</button>
+<div id="emojiBox">
+  <button class="emoji">😊</button><!--0-->
+  <button class="emoji">😂</button><!--1-->
+  <button class="emoji">😭</button><!--2-->
+  <button class="emoji">😒</button><!--3-->
+  <button class="emoji">👌</button><!--4-->
+  <button class="emoji">👍</button><!--5-->
+  <button class="emoji">❤️</button><!--6-->
+  <button class="emoji">😎</button><!--7-->
+  <button class="emoji">🎶</button><!--8-->
+  <button class="emoji">🤔</button><!--9-->
+  <button class="emoji">😫</button><!--10-->
+  <button class="emoji">😡</button><!--11-->
+  <button class="emoji">🫡</button><!--12-->
+  <button class="emoji">😏</button><!--13-->
+  <button class="emoji">😴</button><!--14-->
+  <button class="emoji">😍</button><!--15-->
+  <button class="emoji">🤑</button><!--16-->
+  <button class="emoji">🤢</button><!--17-->
+  <button class="emoji">😤</button><!--18-->
+  <button class="emoji">🤡</button><!--19-->
+  <button class="emoji">🫢</button><!--20-->
+  <button class="emoji">🤓</button><!--21-->
+  <button class="emoji">😈</button><!--22-->
+  <button class="emoji">🥱</button><!--23-->
+  <button class="emoji">💀</button><!--24-->
+  <button class="emoji">🥶</button><!--25-->
+  <button class="emoji">👽</button><!--26-->
+  <button class="emoji">👀</button><!--27-->
+  <button class="emoji">🐎</button><!--28-->
+  <button class="emoji">🤯</button><!--29-->
+  <button class="emoji">😵</button><!--30-->
+  <button class="emoji">😱</button><!--31-->
+  <button class="emoji">😇</button><!--32-->
+  <button class="emoji">🐶</button><!--33-->
+  <button class="emoji">🐱</button><!--34-->
+  <button class="emoji">🥳</button><!--35-->
+</div>
+    </div>
+    <div class="Pad CommentDiv2">
+      <h3>Delete Comment</h3>
+      <form method="POST">
+        {% csrf_token %}
+        <select name="comment_remove">
+          <option></option>
+          {% if if_admin %}
+          {% for comment in comments %}
+          <option value="{{comment.id}}">{{comment.owner.username}}: {{ comment.message }}</option>
+          {% endfor %}
+          {% else %}
+          {% for your_comment in your_comments %}
+          <option value="{{your_comment.id}}">{{ your_comment.message }}</option>
+          {% endfor %}
+          {% endif %}
+        </select>
+        <input type="submit" />
+      </form>
+    </div>
+    </td>
+
+    <!--__________ MAKE A COMMENT __________-->
+    <td></td>
+    <td></td>
+  </tr>
+</table> {% endcomment %}
+
 <script src={% static "main.js" %}></script>
+
+
+
+
 {% endblock content %}

@@ -1,572 +1,556 @@
 /* static/css/dashboard.css */
 
-
 :root {
-    --darker_blue:#4f4f61;
-    --lighter_blue:#6f708f;
-    --border_exterior:#4d62b0;
-    --border_interior: #001359;
+  --darker_blue: #4f4f61;
+  --lighter_blue: #6f708f;
+  --border_exterior: #4d62b0;
+  --border_interior: #001359;
 }
-
 
 /* LANDING PAGE, THE GO TO, THE SPAWN ROOM!*/
 
 .landing-page {
-    text-align: center;
-    margin: 50px;
-    background-color: #34547d;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  margin: 50px;
+  background-color: #34547d;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-.signup-button, .login-button {
-    display: inline-block;
-    padding: 15px 30px;
-    margin: 0 10px;
-    text-decoration: none;
-    color: #ecf0f1;
-    background-color: #4e72c6;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+.signup-button,
+.login-button {
+  display: inline-block;
+  padding: 15px 30px;
+  margin: 0 10px;
+  text-decoration: none;
+  color: #ecf0f1;
+  background-color: #4e72c6;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-.signup-button:hover, .login-button:hover {
-    background-color: #4e2bc0;
-    transform: scale(1.05);
+.signup-button:hover,
+.login-button:hover {
+  background-color: #4e2bc0;
+  transform: scale(1.05);
 }
-
 
 /* YOU HAVE ARRIVED OUTSIDE THE LANDING ZONE */
-
 
 /* __________DASH__________ */
 
 .CreateButton {
-    background-color: #5557c4;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: right;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-
-.CreateButton:hover {
-background-color: #494ba1
-
+  background-color: #5557c4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: right;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
+.CreateButton:hover {
+  background-color: #494ba1;
+}
 
 .Footed {
-background-color: #4f4f619a;
-color: #fff;
-padding: 1rem;
-text-align: center;
-position: fixed;
-bottom: 0;
-width: 98%;
+  background-color: #4f4f619a;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 98%;
 }
 
 .BigDiv {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
 }
 
 .CreationB {
-    height: 50pt;
+  height: 50pt;
 }
 
 .Seperate {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .MyChannels {
-    width: 40%;
-    height: 250pt;
-    border-radius: 5pt;
-    overflow: auto;
-    overflow-y: scroll;
-    border: #4f4f61 solid 3pt;
-    background-color: #6f708f;
+  width: 40%;
+  height: 250pt;
+  border-radius: 5pt;
+  overflow: auto;
+  overflow-y: scroll;
+  border: #4f4f61 solid 3pt;
+  background-color: #6f708f;
 }
 
 .BoxBut {
-    width: 90%;
+  width: 90%;
 }
 
 .ChannelButton {
-    background-color: #6f4caf;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
+  background-color: #6f4caf;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
 
-  .ChannelButton:hover {
-    background-color: #8059c9;
-  }
-
+.ChannelButton:hover {
+  background-color: #8059c9;
+}
 
 .MyChannelButton {
-    background-color: #30316a;
-    text-align: center;
+  background-color: #30316a;
+  text-align: center;
 }
 
 .MyChannelButton:hover {
-    background-color: #3f4088;
+  background-color: #3f4088;
 }
 
 .ChannelInvolvedButton {
-    background-color: #2d5c88;
-    text-align: center;
+  background-color: #2d5c88;
+  text-align: center;
 }
 
 .ChannelInvolvedButton:hover {
-    background-color: #386ea0;
+  background-color: #386ea0;
 }
 
 .BoxWords {
-    color: white;
+  color: white;
 }
 
 .InvolvedChannels {
-    overflow: auto;
-    overflow-y: scroll;
-    width: 40%;
-    height: 250pt;
-    border: #4f4f61 solid 3pt;
-    background-color: #6f708f;
+  overflow: auto;
+  overflow-y: scroll;
+  width: 40%;
+  height: 250pt;
+  border: #4f4f61 solid 3pt;
+  background-color: #6f708f;
 }
 
 .GradBod {
-    font-family: "Arial", sans-serif;
-    background-size: cover;
-    background-image: linear-gradient(to bottom,#f9f9ff,#bbbbd5);
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    box-sizing: border-box;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  font-family: "Arial", sans-serif;
+  background-size: cover;
+  background-image: linear-gradient(to bottom, #f9f9ff, #bbbbd5);
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .DashHeader {
-    background-color: #4f4f61;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-  }
+  background-color: #4f4f61;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
 
 .navigation {
-    display: flex;
-    justify-content: center;
-    background-color: #6f708f;
-    padding: 0.5rem;
-  }
+  display: flex;
+  justify-content: center;
+  background-color: #6f708f;
+  padding: 0.5rem;
+}
 
 .navigation .NavA {
-color: white;
-padding: 10px 20px;
-text-decoration: none;
-margin: 0 10px;
-transition: background-color 0.3s ease;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: background-color 0.3s ease;
 }
 
 .navigation .NavA:hover {
-background-color: #7e7fa6;
+  background-color: #7e7fa6;
 }
 
 .headerWords {
-    margin: 0;
-    font-size: 1.5em;
-  }
+  margin: 0;
+  font-size: 1.5em;
+}
 
-  .headerWords2 {
-    margin: 0;
-    font-size: 1.5em;
-    color:black;
-  }
+.headerWords2 {
+  margin: 0;
+  font-size: 1.5em;
+  color: black;
+}
 
 .DashDiv {
-    width: 100%;
-    justify-content: flex-start;
-    bottom: 0;
-    border: solid 10pt #4f4f6100;
-    display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  bottom: 0;
+  border: solid 10pt #4f4f6100;
+  display: flex;
 }
 
 .DashDiv2 {
-    display: flex;
-    height: 30pt;
-    justify-content: center;
+  display: flex;
+  height: 30pt;
+  justify-content: center;
 }
 
 .CC {
-    height: 20pt;
+  height: 20pt;
 }
 
 .LogoutButton {
-    width: 80pt;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
+  width: 80pt;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
 
 .LogoutButton:hover {
-    background-color: #a04545;
-  }
-
+  background-color: #a04545;
+}
 
 /* __________END DASH__________ */
-
 
 /*__________ CREATE CHANNEL __________ */
 
 .CreateDiv1 {
-    border-radius: 20pt;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: #4f4f61;
-    width: 40%;
-    height:250pt;
-    padding: 5pt;
-    border: rgb(42, 42, 60) solid 3pt;
+  border-radius: 20pt;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #4f4f61;
+  width: 40%;
+  height: 250pt;
+  padding: 5pt;
+  border: rgb(42, 42, 60) solid 3pt;
 }
 
 .CreateDiv2 {
-    justify-content: center;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    height: 99%;
-    width: 90%;
-    background-color: #6f708f;
-    border: solid 3pt rgb(159, 159, 209);
+  justify-content: center;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  height: 99%;
+  width: 90%;
+  background-color: #6f708f;
+  border: solid 3pt rgb(159, 159, 209);
 }
 
-
 .ChannelSettings1 {
-    padding: 5pt;
-    text-align: center;
-    border-radius: 20pt;
-    margin-right: auto;
-    margin-left: auto;
-    border: rgb(42, 42, 60) solid 3pt;
-    background-color: #4f4f61;
-    width: 40%;
+  padding: 5pt;
+  text-align: center;
+  border-radius: 20pt;
+  margin-right: auto;
+  margin-left: auto;
+  border: rgb(42, 42, 60) solid 3pt;
+  background-color: #4f4f61;
+  width: 40%;
 }
 
 .ChannelSettings2 {
-    height: 99%;
-    width: 90%;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: #6f708f;
-    border: solid 3pt rgb(159, 159, 209);
+  height: 99%;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #6f708f;
+  border: solid 3pt rgb(159, 159, 209);
 }
 
 .DeleDiv1 {
-    border-top: dashed 3pt rgb(218, 0, 0);
-    padding: 5pt;
-    background-color: rgb(22, 26, 36);
-    color: rgb(255, 109, 109);
+  border-top: dashed 3pt rgb(218, 0, 0);
+  padding: 5pt;
+  background-color: rgb(22, 26, 36);
+  color: rgb(255, 109, 109);
 }
 
 .DeleteButton {
-    background-color: rgb(143, 0, 0);
-    color: rgb(255, 148, 148);
-    font-size: 15pt;
-    width: 110pt;
-    height: 40pt;
-    border-radius: 20pt;
-    border: solid 3pt red;
-    transition: ease 0.3s;
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
+  background-color: rgb(143, 0, 0);
+  color: rgb(255, 148, 148);
+  font-size: 15pt;
+  width: 110pt;
+  height: 40pt;
+  border-radius: 20pt;
+  border: solid 3pt red;
+  transition: ease 0.3s;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .DeleteButton:hover {
-    cursor: pointer;
-    background-color: red;
-    border: solid 3pt rgb(139, 0, 0);
-    color: rgb(255, 198, 198);
+  cursor: pointer;
+  background-color: red;
+  border: solid 3pt rgb(139, 0, 0);
+  color: rgb(255, 198, 198);
 }
 
 .ConfirmDeleteButton {
-    background-color: rgb(143, 0, 0);
-    color: rgb(255, 148, 148);
-    font-size: 15pt;
-    width: 220pt;
-    height: 40pt;
-    border-radius: 20pt;
-    border: solid 3pt red;
-    transition: ease 0.3s;
-    text-align: center;
-    margin-right: auto;
-    margin-left: auto;
+  background-color: rgb(143, 0, 0);
+  color: rgb(255, 148, 148);
+  font-size: 15pt;
+  width: 220pt;
+  height: 40pt;
+  border-radius: 20pt;
+  border: solid 3pt red;
+  transition: ease 0.3s;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .ConfirmDeleteButton:hover {
-    cursor: pointer;
-    background-color: red;
-    border: solid 3pt rgb(139, 0, 0);
-    color: rgb(255, 198, 198);
+  cursor: pointer;
+  background-color: red;
+  border: solid 3pt rgb(139, 0, 0);
+  color: rgb(255, 198, 198);
 }
 
 .SelectAR {
-    width: 100pt;
+  width: 100pt;
 }
 
 .BottomBar {
-    padding: 3pt;
-    border-bottom: solid 3pt rgb(159, 159, 209);
+  padding: 3pt;
+  border-bottom: solid 3pt rgb(159, 159, 209);
 }
 
 .PicBorder {
-    border: solid 3pt rgb(159, 159, 209);
-    padding: 15pt;
+  border: solid 3pt rgb(159, 159, 209);
+  padding: 15pt;
 }
-
 
 /*__________  END CREATE CHANNEL __________ */
 
 .JustMargin {
-    margin-left: auto;
-    margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*__________ ABOUT US & CONTACTS __________ */
 
 .AboutDiv1 {
-
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-    width: 60%;
-    background-color: var(--darker_blue);
-    border-radius: 20pt;
-    border: rgb(42, 42, 60) solid 3pt;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  background-color: var(--darker_blue);
+  border-radius: 20pt;
+  border: rgb(42, 42, 60) solid 3pt;
 }
 
 .AboutDiv2 {
-    padding: 10pt;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    margin: 10pt;
-    text-align: center;
-    background-color: var(--lighter_blue);
-    color: white;
-    border: solid 3pt rgb(159, 159, 209);
+  padding: 10pt;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  margin: 10pt;
+  text-align: center;
+  background-color: var(--lighter_blue);
+  color: white;
+  border: solid 3pt rgb(159, 159, 209);
 }
 
 .ContA:link {
-    color: #cfe8ff;
+  color: #cfe8ff;
 }
 
 .ContA:visited {
-    color: #8191a0;
+  color: #8191a0;
 }
 
 .ContA:hover {
-    color: #95ccff;
+  color: #95ccff;
 }
-
 
 /* __________ END ABOUT US & CONTACTS __________ */
 
-
 /* __________ CHANNEL __________ */
 
-
 .BigChannelDiv {
-    display: flex;
+  display: flex;
 }
 
 .BobContainer {
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    width: 15%;
-    margin-left: auto;
-    height:100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: 15%;
+  margin-left: auto;
+  height: 100%;
 }
 
 .Bob {
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    height: 100%;
-    padding: 5pt;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+  padding: 5pt;
 }
 
 .GETSMALL {
-    height:5pt;
+  height: 5pt;
 }
 
 .ChannelTable {
-    width: 98%;
-    margin-right: auto;
-    margin-left: auto;
+  width: 98%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .ChannelTD {
-    width: 15%;
-    height: 100%;
-    border: solid 3pt var(--border_exterior);
-    background-color: var(--border_interior)
+  width: 15%;
+  height: 100%;
+  border: solid 3pt var(--border_exterior);
+  background-color: var(--border_interior);
 }
 
 .testingpic {
-    border-radius: 50%;
+  border-radius: 50%;
 }
-
 
 .MemberTD {
-    background-color: var(--border_interior);
-    width: 15%;
-    border: solid 3pt var(--border_exterior);
+  background-color: var(--border_interior);
+  width: 15%;
+  border: solid 3pt var(--border_exterior);
 }
 
-
 .ListName {
-    color: white;
-    border-bottom: solid 3pt var(--border_interior);
+  color: white;
+  border-bottom: solid 3pt var(--border_interior);
 }
 
 .List {
-    background-color: #828db5;
-    border: solid 3pt var(--border_interior);
-    text-align: center;
-    overflow-y: auto;
-    height: 425pt;
+  background-color: #828db5;
+  border: solid 3pt var(--border_interior);
+  text-align: center;
+  overflow-y: auto;
+  height: 425pt;
 }
 
-
 .OwnerL {
-    color: rgb(128, 0, 197);
+  color: rgb(128, 0, 197);
 }
 
 .NoPad {
-    text-align: right;
-    padding: 0;
-    margin: 0;
+  text-align: right;
+  padding: 0;
+  margin: 0;
 }
 
 .NoPad2 {
-    text-align: left;
-    padding: 0;
-    margin: 0;
+  text-align: left;
+  padding: 0;
+  margin: 0;
 }
 
 .MemberL {
-    color: rgb(36, 36, 103);
+  color: rgb(36, 36, 103);
 }
 
 .TestingMessages {
-    background-color: rgb(177, 176, 211);
-    /* background-color: rgb(215, 235, 247); */
-    color: rgb(27, 36, 40);
-    border: solid 3pt rgb(0, 19, 89);
-    height: 350pt;
-    overflow-y: auto;
+  background-color: rgb(177, 176, 211);
+  /* background-color: rgb(215, 235, 247); */
+  color: rgb(27, 36, 40);
+  border: solid 3pt rgb(0, 19, 89);
+  height: 350pt;
+  overflow-y: auto;
 }
 
 .messageTD {
-    vertical-align: top;
-    height: 350pt;
-    border: solid 3pt rgb(77, 98, 176);
-    background-color: black;
+  vertical-align: top;
+  height: 350pt;
+  border: solid 3pt rgb(77, 98, 176);
+  background-color: black;
 }
 
 .Pad {
-    padding: 5pt;
+  padding: 5pt;
 }
 
 .yourComment {
-    display: flex;
-    justify-content: flex-end;
-    padding: 3pt;
-    border-bottom: var(--border_interior) dashed 1pt;
+  display: flex;
+  justify-content: flex-end;
+  padding: 3pt;
+  border-bottom: var(--border_interior) dashed 1pt;
 }
 
 .comment {
-    display: flex;
-    justify-content: flex-start;
-    padding:3pt;
-    border-bottom: var(--border_interior) dashed 1pt;
+  display: flex;
+  justify-content: flex-start;
+  padding: 3pt;
+  border-bottom: var(--border_interior) dashed 1pt;
 }
 
 .CommentTable {
-    max-width: 100pt;
-    width: 100pt;
-    word-wrap: break-word;
+  max-width: 100pt;
+  width: 100pt;
+  word-wrap: break-word;
 }
 
 .TestingTD {
-    max-width: 500pt;
-    word-wrap: break-word;
+  max-width: 500pt;
+  word-wrap: break-word;
 }
 
 .CommentDiv1 {
-    width: 70%;
-    border: solid 3pt var(--border_interior);
-    background-color: #828db5;
+  width: 70%;
+  border: solid 3pt var(--border_interior);
+  background-color: #828db5;
 }
 
 .CommentDiv2 {
-    border: solid 3pt var(--border_interior);
-    width: 30%;
-    background-color: #828db5;
+  border: solid 3pt var(--border_interior);
+  width: 30%;
+  background-color: #828db5;
 }
 
 .CommentBar {
-    width: 80%;
-    height: 15pt;
+  width: 80%;
+  height: 15pt;
 }
 
 .CreateComment {
-    border: solid 3pt var(--border_exterior);
-    display: flex;
-    justify-content: space-evenly;
-    background-color: var(--border_interior);
+  border: solid 3pt var(--border_exterior);
+  display: flex;
+  justify-content: space-evenly;
+  background-color: var(--border_interior);
 }
 
 /* __________ END CHANNEL __________  */
@@ -574,100 +558,101 @@ background-color: #7e7fa6;
 /* __________ PROFILE __________ */
 
 .ProfileTable {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-
-
-
-
-
 
 /* __________ END PROFILE __________ */
 
 .test {
-    color: #bbbbd5;
-    background-image: linear-gradient(to bottom,rgb(241, 241, 255),rgb(22, 22, 33),rgb(22, 22, 33),rgb(63, 63, 63));
-    position: fixed;
+  color: #bbbbd5;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(241, 241, 255),
+    rgb(22, 22, 33),
+    rgb(22, 22, 33),
+    rgb(63, 63, 63)
+  );
+  position: fixed;
 }
 
 .whatisgoingon {
-    background-color: indianred;
-    color: cadetblue;
-    color-scheme: red;
-    color-interpolation-filters: yellow;
+  background-color: indianred;
+  color: cadetblue;
+  color-scheme: red;
+  color-interpolation-filters: yellow;
 }
 .Talign {
-    text-align: center;
+  text-align: center;
 }
 
-
-
 .GoodLookinButton {
-    width: 60pt;
-    height: 30pt;
-    color: white;
-    background-color: rgb(53, 54, 74);
-    border: solid 2pt rgb(185, 185, 255);
-    transition: 0.25s;
+  width: 60pt;
+  height: 30pt;
+  color: white;
+  background-color: rgb(53, 54, 74);
+  border: solid 2pt rgb(185, 185, 255);
+  transition: 0.25s;
 }
 
 .GoodLookinButton:hover {
-    background-color: rgb(53, 74, 57);
-    border: solid 2pt rgb(185, 255, 193);
-    cursor: pointer;
+  background-color: rgb(53, 74, 57);
+  border: solid 2pt rgb(185, 255, 193);
+  cursor: pointer;
 }
 
-
-
 .Input_ {
-    background-color: rgb(227, 224, 255);
-    border: solid 1pt rgb(167, 174, 212);
+  background-color: rgb(227, 224, 255);
+  border: solid 1pt rgb(167, 174, 212);
 }
 
 .Input_::after {
-    height: 20pt;
+  height: 20pt;
 }
 
 .SignDiv {
-    border: solid 3pt rgb(68, 68, 93);
-    border-radius: 20pt;
-    background-color: rgb(50, 50, 72);
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
+  border: solid 3pt rgb(68, 68, 93);
+  border-radius: 20pt;
+  background-color: rgb(50, 50, 72);
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
 }
 
 .SignDiv2 {
-    border: solid rgb(128, 155, 214) 3pt;
-    text-align: center;
-    padding: 3pt;
-    width:90%;
-    background-color: rgb(85, 83, 139);
-    margin-left: auto;
-    margin-right: auto;
+  border: solid rgb(128, 155, 214) 3pt;
+  text-align: center;
+  padding: 3pt;
+  width: 90%;
+  background-color: rgb(85, 83, 139);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .STool {
-    border: solid 3pt rgb(0, 0, 0);
+  border: solid 3pt rgb(0, 0, 0);
 }
-
 
 /*background-color: rgb(22, 22, 33);*/
 
 html {
-    height: 100%;
+  height: 100%;
 }
 
 .SignReg {
-    background-size: cover;
-    background-image: linear-gradient(to bottom,rgb(22, 22, 33),rgb(22, 22, 33),rgb(22, 22, 33),rgb(63, 63, 63));
-    color: white;
-    margin: 0;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  background-size: cover;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(22, 22, 33),
+    rgb(22, 22, 33),
+    rgb(22, 22, 33),
+    rgb(63, 63, 63)
+  );
+  color: white;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 /*
 body {
@@ -720,15 +705,78 @@ button {
 
 /* Misc */
 .sensitiveContent {
-    display: none;
-    margin-right: auto;
-    margin-left: auto;
+  display: none;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 /* Emojis */
 #emojiBox {
-    display: none;
-    grid-template-columns: repeat(12, 40px);
-    
+  display: none;
+  grid-template-columns: repeat(12, 40px);
 }
 
+.MobileInv {
+  display: none;
+}
+
+.MobileVersion {
+  display: none;
+}
+
+.MobileChannelTable {
+  width: 50%;
+}
+
+.MobileChannels {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  display: none;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 500px) {
+  .MobileChannels {
+    display: flex;
+  }
+
+  .MobileInv {
+    height: 20pt;
+    display: block;
+  }
+
+  .MobileVersion {
+    display: block;
+  }
+
+  .Seperate {
+    display: none;
+  }
+
+  .MyChannels {
+    width: 100%;
+  }
+
+  .InvolvedChannels {
+    width: 100%;
+  }
+
+  .ChannelTable {
+    display: none;
+  }
+
+  .List {
+    width: 170pt;
+    height: 200pt;
+  }
+
+  .CommentDiv2 {
+    width: 170pt;
+  }
+
+  .CommentDiv1 {
+    width: 100%;
+  }
+}
