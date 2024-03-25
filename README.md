@@ -1,7 +1,11 @@
-# Unit_6_Matthew_Micah_Caleb_Conner
-Group Unit Project
-
 Name - Elixer
+
+Elixer is a family friendly messaging system with a filter system
+
+In Elixer you can create a user, create a channel, and then send messages in the channel. If you are the owner of the channel you will have access to the settings which lets you enable the filter
+
+
+
 
 Done So Far - 
 [√] - Created a superuser 
@@ -17,3 +21,6 @@ Done So Far -
 [√] - Comments 
 [√] - Project has full CRUD operations 
 [√] - CSS styling
+
+
+
