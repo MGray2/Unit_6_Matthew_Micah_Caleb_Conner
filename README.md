@@ -17,27 +17,3 @@ Done So Far -
 [√] - Comments 
 [√] - Project has full CRUD operations 
 [√] - CSS styling
-
-SuperUser Account
-Username: admin  
-Password: password
-
-test users
-
-user1 (admin)
-ncNhZFyW
-
-user2
-ekFAhj4C
-
-user3
-6EVxP4cF
-
-user4
-EUGhdrcT
-
-user5 (owns their own channel)
-HHYu8MyW
-
-sean_ennis
-Reading_time
